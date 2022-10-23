@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Phiếu xuất vật tư</title>
+</head>
+<body style="background-color:#808080; margin:0px;">
+    <style>
+        .border, .border td, .border th {
+            border-color: #000000;
+            border-style: solid;
+            border-width: 1px;
+            padding: 2px;
+        }
+
+        .border {
+            border-collapse: collapse;
+        }
+
+            .border th {
+                text-align: center;
+            }
+
+            .border td {
+                text-align: right;
+            }
+
+            .border .text {
+                text-align: left;
+            }
+    </style>
+    <div style="width: 450px; height: 600px; padding: 10px; padding-top: 0px; margin: auto; font-size: 10px; background-color: #ffffff; background-repeat: no-repeat; background-image: url('https://api.thontrang.com/images/BiBen450_600_10.png');">
+        <table style="width:100%; font-size:10px; line-height:14px;">
+            <tr>
+                <td>
+                    <a href='javascript:window.print();' title="In biểu mẫu"><img alt="In biểu mẫu" title="In biểu mẫu" src="https://api.thontrang.com/images/biben200.png" width="50px" height="50px" /></a>
+                </td>
+                <td>
+                    <div style="text-align:center;">                        
+                        <p style="font-size: 14px;"><b>PHIẾU XUẤT VẬT TƯ</b></p>
+                        <p>Ngày lập: [DateFounded]</p>
+                    </div>
+                </td>
+                <td>
+                    <div style="text-align:right;">                        
+                        <p>Đơn hàng: [Code]</p>
+                        <p>Ngày in: [NgayIn]</p>
+                    </div>
+                </td>
+            </tr>
+        </table>                
+        <div style="font-size:10px; line-height:14px;">           
+            <table style="width:100%; font-size:10px; line-height:14px; ">
+                <tr>
+                    <td>
+                        Khách hàng:
+                    </td>
+                    <td>
+                       <b>[CustomerDisplay]</b>
+                    </td>
+                    <td>
+                       Hạn nợ:
+                    </td>
+                    <td>
+                        [Note]
+                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        Địa chỉ:
+                    </td>
+                    <td>
+                       <b>[AddressDelivery]</b>
+                    </td>
+                    <td>
+                       Điện thoại:
+                    </td>
+                    <td>
+                        [CustomerPhone]
+                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        Xe giao:
+                    </td>
+                    <td>
+                        <b>[BienKiemSoat]</b>
+                    </td>
+                    <td>
+                        Lái xe:
+                    </td>
+                    <td>
+                        [LaiXe]
+                    </td>
+                </tr>
+            </table>    
+            <table class='border' style='width: 100%; font-size:10px; line-height:14px;'>
+                <thead>
+                <th style='text-align:center;'><a style='cursor:pointer;'>STT</a></th>
+                <th style='text-align:center;'><a style='cursor:pointer;'>Tên hàng</a></th>
+                <th style='text-align:center;'><a style='cursor:pointer;'>ĐVT</a></th>
+                <th style='text-align:center;'><a style='cursor:pointer;'>Thùng</a></th>
+                <th style='text-align:center;'><a style='cursor:pointer;'>Lẻ</a></th>
+                <th style='text-align:center;'><a style='cursor:pointer;'>Đơn giá</a></th>
+                <th style='text-align:center;'><a style='cursor:pointer;'>Thành tiền</a></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style='text-align:center;'>1</td>
+                        <td style='text-align:left;'>9x Actione 4.3EC 100ml Trái Cà A.Nguyên</td>
+                        <td style='text-align:left;'>Chai</td>
+                        <td style='text-align:right;'>10</td>
+                        <td style='text-align:right;'>400</td>
+                        <td style='text-align:right;'></td>
+                        <td style='text-align:right;'><b></b></td>
+                    </tr> 
+                    <tr>
+                        <td style='text-align:right;' colspan='3'>Tổng số lượng</td>
+                        <td style='text-align:right;'><b>10</b></td>
+                        <td style='text-align:right;'><b>400</b></td>
+                        <td style='text-align:right;'>Tổng tiền</td>
+                        <td style='text-align:right;'><b></b></td>
+                    </tr>                   
+                </tbody>
+            </table>
+            <table style="width:100%; font-size:10px; line-height:14px; ">
+                <tr>
+                    <td style="text-align: center;">
+                        <b>NGƯỜI NHẬN</b>
+                    </td>
+                    <td style="text-align: center;">
+                        <b>NGƯỜI XUẤT</b>
+                    </td>                   
+                </tr>                
+            </table>    
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1066 @@
+<div class="row">
+    <div id="breadcrumbs-wrapper" data-image="https://crm.thontrang.com/app-assets/images/gallery/breadcrumb-bg.jpg"
+        style="color: #ffffff; background: rgb(40,70,99); background: linear-gradient(90deg, rgba(40,70,99,1) 0%, rgba(62,110,159,1) 35%, rgba(106,179,245,1) 100%);">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <h5 class="breadcrumbs-title mt-0 mb-0" style="color: #ffffff;">Phiếu xuất hàng</h5>
+                </div>
+                <div class="col s12 m6 l6 right-align-md">
+                    <ol class="breadcrumbs mb-0">
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">CRM</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">Đơn hàng</a>
+                        </li>
+                        <li class="breadcrumb-item active" style="color: #ffffff;">Phiếu xuất hàng
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12">
+        <div class="container">
+            <div class="section">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <div id="basic-tabs" class="card card card-default scrollspy">
+                            <div class="card-content">
+                                <div class="card-title">
+                                    <div class="row">
+                                        <div class="col s12 m6 l6">
+                                            <h4 class="card-title">Phiếu xuất hàng theo công ty </h4>
+                                        </div>
+                                        <div class="col s12 m6 l6">
+                                            <ul class="tabs">
+                                                <li class="tab col m4 s12 p-0"><a class="active p-0" href="#1">Thôn
+                                                        Trang</a></li>
+                                                <li class="tab col m4 s12 p-0"><a class="p-0" href="#2">
+                                                        Bi Ben</a>
+                                                </li>
+                                                <li class="tab col m4 s12 p-0"><a class="p-0" href="#3">Vỹ Tâm</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="1">
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <input name="ID" [(ngModel)]="warehouseExportService.formDataThonTrang.ID"
+                                                type="hidden">
+                                            <div class="card-title">
+                                                <div class="col s6 m6 l3">
+                                                    <h3 class="card-title">TT (01)
+                                                    </h3>
+                                                </div>
+                                                <div class="col s6 m6 l9">
+                                                    <a title="Danh sách"
+                                                        href="javascript:window.open('','_self').close();"
+                                                        style="padding-top: 3px;"
+                                                        class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                            class="material-icons">arrow_back</i></a>&nbsp;&nbsp;&nbsp;
+                                                    <a title="In đơn hàng" (click)="onPrint()" style="padding-top: 3px;"
+                                                        class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                            class="material-icons">print</i></a>&nbsp;&nbsp;&nbsp;
+                                                    <a title="Thanh toán"
+                                                        (click)="onWarehouseExportPayment(warehouseExportService.formDataThonTrang.ID)"
+                                                        style="padding-top: 3px;"
+                                                        class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                            class="material-icons">attach_money</i></a>&nbsp;&nbsp;&nbsp;
+                                                    <button title="Lưu phiếu" type="submit" style="padding-top: 3px;"
+                                                        class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                                                            class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col s6 m6 l6">
+                                                    <div class="input-field">
+                                                        <label for="DateFounded">Ngày lập:
+                                                            <b>{{warehouseExportService.formDataThonTrang.DateFounded |
+                                                                date:
+                                                                'yyyy-MM-dd' }}</b></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col s6 m6 l6">
+                                                    <input
+                                                        [(ngModel)]="warehouseExportService.formDataThonTrang.DateFounded"
+                                                        name="DateFounded" type="date" datetime="yyyy-MM-dd"
+                                                        style="padding-top:8px; padding-bottom:2px; text-align: right;">
+                                                    <br />
+                                                    <br />
+                                                </div>
+                                                <div class="col s12 m12 l6">
+                                                    <div class="input-field">
+                                                        <p>
+                                                            <label>
+                                                                <input type="checkbox" class="filled-in" name="Active"
+                                                                    [(ngModel)]="warehouseExportService.formDataThonTrang.Active" />
+                                                                <span>Kích hoạt</span>
+                                                            </label>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col s12 m12 l6">
+                                                    <div class="input-field">
+                                                        <p style="text-align: right; color: red; font-weight: bold;">
+                                                            Tổng cộng:
+                                                            {{warehouseExportService.formDataThonTrang.TotalFinal |
+                                                            number:
+                                                            '1.0-0'}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="Code">Code</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <div class="input-field">
+                                                    <input placeholder="Code" name="Code"
+                                                        [(ngModel)]="warehouseExportService.formDataThonTrang.Code"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="Name">Mã đơn hàng</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <div class="input-field">
+                                                    <input placeholder="Mã đơn hàng (nếu có)" name="Name"
+                                                        [(ngModel)]="warehouseExportService.formDataThonTrang.Name"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="CustomerDisplay">Đại lý</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <input placeholder="Đại lý" name="CustomerDisplay" disabled
+                                                    [(ngModel)]="warehouseExportService.formDataThonTrang.CustomerDisplay"
+                                                    type="text">
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="CustomerPhone">Điện thoại</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <div class="input-field">
+                                                    <input placeholder="Điện thoại" name="CustomerPhone"
+                                                        [(ngModel)]="warehouseExportService.formDataThonTrang.CustomerPhone"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="AddressDelivery">Địa chỉ giao hàng</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <div class="input-field">
+                                                    <input placeholder="Địa chỉ giao hàng" name="AddressDelivery"
+                                                        [(ngModel)]="warehouseExportService.formDataThonTrang.AddressDelivery"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="CompanyDisplay">Công ty</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <input placeholder="Đại lý" name="CompanyDisplay" disabled
+                                                    [(ngModel)]="warehouseExportService.formDataThonTrang.CompanyDisplay"
+                                                    type="text">
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="StatusID">Trạng thái</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <mat-select
+                                                    style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                                    name="StatusID" class="browser-default"
+                                                    [(ngModel)]="warehouseExportService.formDataThonTrang.StatusID">
+                                                    <mat-option *ngFor="let item of statusService.list"
+                                                        [value]="item.ID">
+                                                        {{item.Display}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <br />
+                                                <br />
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="UserFoundedID">Người lập</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <mat-select
+                                                    style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                                    name="UserFoundedID" class="browser-default"
+                                                    [(ngModel)]="warehouseExportService.formDataThonTrang.UserFoundedID">
+                                                    <mat-option *ngFor="let item of membershipService.list"
+                                                        [value]="item.ID">
+                                                        {{item.Display}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <br />
+                                                <br />
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col s12 m12 l8">
+                                            <div class="card-title">
+                                                <div class="row">
+                                                    <div class="col s6 m6 l9">
+                                                        <h3 class="card-title">Chi tiết (02)
+                                                        </h3>
+                                                    </div>
+                                                    <div class="col s4 m4 l3">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col s12 m12 l6">
+                                                        <label for="ProductID"></label>
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <label for="Quantity">Số lượng</label>
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <label for="Price">Đơn giá (Tự động)</label>
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                    </div>
+                                                    <div class="col s12 m12 l6">
+                                                        <mat-select
+                                                            style="font-size: 16px; padding-top:0px; padding-bottom:14px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                                            name="productID" class="browser-default"
+                                                            [(ngModel)]="warehouseExportDetailService.formDataThonTrang.ProductID">
+                                                            <input
+                                                                (keyup)="onFilterProductThonTrang($event.target.value)">
+                                                            <mat-option
+                                                                *ngFor="let item of productService.listThonTrang"
+                                                                [value]="item.ID">
+                                                                {{item.Display}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <input matInput
+                                                            [(ngModel)]="warehouseExportDetailService.formDataThonTrang.Quantity"
+                                                            placeholder="Số lượng"
+                                                            class="mat-input-element mat-form-field-autofill-control"
+                                                            type="number" style="text-align: right;">
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <input matInput
+                                                            [(ngModel)]="warehouseExportDetailService.formDataThonTrang.Price"
+                                                            placeholder="Đơn giá"
+                                                            class="mat-input-element mat-form-field-autofill-control"
+                                                            type="number" style="text-align: right;">
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <a title="Thêm chi tiết" type="submit" style="padding-top: 3px;"
+                                                            class="mb-6 btn-floating waves-effect waves-light cyan"
+                                                            (click)="onAddDetailThonTrang()"><i
+                                                                class="material-icons">add</i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="KhungOverflow">
+                                                    <mat-table [dataSource]="dataSourceThonTrang" matSort>
+                                                        <ng-container matColumnDef="ProductDisplay">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Thành
+                                                                phẩm
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <img width="20%" [src]="element.ProductImageURL">
+                                                                <b>{{element.ProductDisplay}}</b>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="UnitDisplay">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>ĐVT
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <div>
+                                                                    {{element.UnitDisplay}}
+                                                                </div>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Quantity">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Số lượng
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <input matInput [(ngModel)]="element.Quantity"
+                                                                    placeholder="Số lượng" type="number"
+                                                                    style="text-align: right;">&nbsp;&nbsp;&nbsp;
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Price">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Đơn giá
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <input matInput [(ngModel)]="element.Price"
+                                                                    placeholder="Đơn giá" type="number"
+                                                                    style="text-align: right;">
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Total">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Tổng cộng
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <b style="text-align: right; width: 100px;">
+                                                                    {{element.Total | number: '1.0-0'}}
+                                                                </b>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Save">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <a title="Lưu chi tiết" type="submit"
+                                                                    style="padding-top: 3px; margin-left: 10px;"
+                                                                    class="mb-6 btn-floating waves-effect waves-light cyan"
+                                                                    (click)="onUpdateDetail(element)"><i
+                                                                        class="material-icons">create</i></a>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Delete">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <a style="padding-top: 3px;" title="Xóa"
+                                                                    class="mb-6 btn-floating waves-effect waves-light red"
+                                                                    (click)="onDeleteDetail(element)"><i
+                                                                        class="material-icons">delete_outline</i></a>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="WarehouseExportDetailSource">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                &nbsp;&nbsp;&nbsp;
+                                                                <a title="Phiếu nhập hàng"
+                                                                    (click)="onWarehouseExportDetailSource(element)"
+                                                                    style="padding-top: 3px;"
+                                                                    class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                                        class="material-icons">assignment</i></a>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="loading">
+                                                            <mat-footer-cell *matFooterCellDef colspan="4">
+                                                                Đang tải dữ liệu...
+                                                            </mat-footer-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="noData">
+                                                            <mat-footer-cell *matFooterCellDef colspan="4">
+                                                                Chưa có dữ liệu.
+                                                            </mat-footer-cell>
+                                                        </ng-container>
+                                                        <mat-header-row *matHeaderRowDef="displayColumnsThonTrang">
+                                                        </mat-header-row>
+                                                        <mat-row
+                                                            *matRowDef="let row; columns: displayColumnsThonTrang;">
+                                                        </mat-row>
+                                                        <mat-footer-row *matFooterRowDef="['loading']"
+                                                            [ngClass]="{'hide':dataSourceThonTrang!=null}">
+                                                        </mat-footer-row>
+                                                        <mat-footer-row *matFooterRowDef="['noData']"
+                                                            [ngClass]="{'hide':!(dataSourceThonTrang!=null && dataSourceThonTrang.data.length==0)}">
+                                                        </mat-footer-row>
+                                                    </mat-table>
+                                                    <!-- <mat-paginator [pageSizeOptions]="[10,20,50,100]" [pageSize]="10" [showFirstLastButtons]>
+                                                        </mat-paginator> -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="2">
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <input name="ID" [(ngModel)]="warehouseExportService.formDataBiBen.ID"
+                                                type="hidden">
+                                            <div class="card-title">
+                                                <div class="col s6 m6 l3">
+                                                    <h3 class="card-title">BB (01)
+                                                    </h3>
+                                                </div>
+                                                <div class="col s6 m6 l9">
+                                                    <a title="Danh sách"
+                                                        href="javascript:window.open('','_self').close();"
+                                                        style="padding-top: 3px;"
+                                                        class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                            class="material-icons">arrow_back</i></a>&nbsp;&nbsp;&nbsp;
+                                                    <a title="Thanh toán"
+                                                            (click)="onWarehouseExportPayment(warehouseExportService.formDataBiBen.ID)"
+                                                            style="padding-top: 3px;"
+                                                            class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                                class="material-icons">attach_money</i></a>&nbsp;&nbsp;&nbsp;
+                                                    <button title="Lưu phiếu" type="submit" style="padding-top: 3px;"
+                                                        class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                                                            class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col s6 m6 l6">
+                                                    <div class="input-field">
+                                                        <label for="DateFounded">Ngày lập:
+                                                            <b>{{warehouseExportService.formDataBiBen.DateFounded |
+                                                                date:
+                                                                'yyyy-MM-dd' }}</b></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col s6 m6 l6">
+                                                    <input
+                                                        [(ngModel)]="warehouseExportService.formDataBiBen.DateFounded"
+                                                        name="DateFounded" type="date" datetime="yyyy-MM-dd"
+                                                        style="padding-top:8px; padding-bottom:2px; text-align: right;">
+                                                    <br />
+                                                    <br />
+                                                </div>
+                                                <div class="col s12 m12 l6">
+                                                    <div class="input-field">
+                                                        <p>
+                                                            <label>
+                                                                <input type="checkbox" class="filled-in" name="Active"
+                                                                    [(ngModel)]="warehouseExportService.formDataBiBen.Active" />
+                                                                <span>Kích hoạt</span>
+                                                            </label>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col s12 m12 l6">
+                                                    <div class="input-field">
+                                                        <p style="text-align: right; color: red; font-weight: bold;">
+                                                            Tổng cộng: {{warehouseExportService.formDataBiBen.TotalFinal
+                                                            | number:
+                                                            '1.0-0'}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="Code">Code</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <div class="input-field">
+                                                    <input placeholder="Code" name="Code"
+                                                        [(ngModel)]="warehouseExportService.formDataBiBen.Code"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="Name">Mã đơn hàng</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <div class="input-field">
+                                                    <input placeholder="Mã đơn hàng (nếu có)" name="Name"
+                                                        [(ngModel)]="warehouseExportService.formDataBiBen.Name"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="CustomerDisplay">Đại lý</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <input placeholder="Đại lý" name="CustomerDisplay" disabled
+                                                    [(ngModel)]="warehouseExportService.formDataBiBen.CustomerDisplay"
+                                                    type="text">
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="CustomerPhone">Điện thoại</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <div class="input-field">
+                                                    <input placeholder="Điện thoại" name="CustomerPhone"
+                                                        [(ngModel)]="warehouseExportService.formDataBiBen.CustomerPhone"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="AddressDelivery">Địa chỉ giao hàng</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <div class="input-field">
+                                                    <input placeholder="Địa chỉ giao hàng" name="AddressDelivery"
+                                                        [(ngModel)]="warehouseExportService.formDataBiBen.AddressDelivery"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="CompanyDisplay">Công ty</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <input placeholder="Đại lý" name="CompanyDisplay" disabled
+                                                    [(ngModel)]="warehouseExportService.formDataBiBen.CompanyDisplay"
+                                                    type="text">
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="StatusID">Trạng thái</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <mat-select
+                                                    style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                                    name="StatusID" class="browser-default"
+                                                    [(ngModel)]="warehouseExportService.formDataBiBen.StatusID">
+                                                    <mat-option *ngFor="let item of statusService.list"
+                                                        [value]="item.ID">
+                                                        {{item.Display}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <br />
+                                                <br />
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="UserFoundedID">Người lập</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <mat-select
+                                                    style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                                    name="UserFoundedID" class="browser-default"
+                                                    [(ngModel)]="warehouseExportService.formDataBiBen.UserFoundedID">
+                                                    <mat-option *ngFor="let item of membershipService.list"
+                                                        [value]="item.ID">
+                                                        {{item.Display}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <br />
+                                                <br />
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col s12 m12 l7">
+                                            <div class="card-title">
+                                                <div class="row">
+                                                    <div class="col s6 m6 l9">
+                                                        <h3 class="card-title">Chi tiết (02)
+                                                        </h3>
+                                                    </div>
+                                                    <div class="col s4 m4 l3">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col s12 m12 l6">
+                                                        <label for="ProductID"></label>
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <label for="Quantity">Số lượng</label>
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <label for="Price">Đơn giá (Tự động)</label>
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                    </div>
+                                                    <div class="col s12 m12 l6">
+                                                        <mat-select
+                                                            style="font-size: 16px; padding-top:0px; padding-bottom:14px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                                            name="productID" class="browser-default"
+                                                            [(ngModel)]="warehouseExportDetailService.formDataBiBen.ProductID">
+                                                            <input (keyup)="onFilterProductBiBen($event.target.value)">
+                                                            <mat-option *ngFor="let item of productService.listBiBen"
+                                                                [value]="item.ID">
+                                                                {{item.Display}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <input matInput
+                                                            [(ngModel)]="warehouseExportDetailService.formDataBiBen.Quantity"
+                                                            placeholder="Số lượng"
+                                                            class="mat-input-element mat-form-field-autofill-control"
+                                                            type="number" style="text-align: right;">
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <input matInput
+                                                            [(ngModel)]="warehouseExportDetailService.formDataBiBen.Price"
+                                                            placeholder="Đơn giá"
+                                                            class="mat-input-element mat-form-field-autofill-control"
+                                                            type="number" style="text-align: right;">
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <a title="Thêm chi tiết" type="submit" style="padding-top: 3px;"
+                                                            class="mb-6 btn-floating waves-effect waves-light cyan"
+                                                            (click)="onAddDetailBiBen()"><i
+                                                                class="material-icons">add</i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="KhungOverflow">
+                                                    <mat-table [dataSource]="dataSourceBiBen" matSort>
+                                                        <ng-container matColumnDef="ProductDisplay">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Thành
+                                                                phẩm
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <img width="20%" [src]="element.ProductImageURL">
+                                                                <b>{{element.ProductDisplay}}</b>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="UnitDisplay">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>ĐVT
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <div>
+                                                                    {{element.UnitDisplay}}
+                                                                </div>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Quantity">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Số lượng
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <input matInput [(ngModel)]="element.Quantity"
+                                                                    placeholder="Số lượng" type="number"
+                                                                    style="text-align: right;">&nbsp;&nbsp;&nbsp;
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Price">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Đơn giá
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <input matInput [(ngModel)]="element.Price"
+                                                                    placeholder="Đơn giá" type="number"
+                                                                    style="text-align: right;">
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Total">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Tổng cộng
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <b style="text-align: right; width: 100px;">
+                                                                    {{element.Total | number: '1.0-0'}}
+                                                                </b>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Save">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <a title="Lưu chi tiết" type="submit"
+                                                                    style="padding-top: 3px; margin-left: 10px;"
+                                                                    class="mb-6 btn-floating waves-effect waves-light cyan"
+                                                                    (click)="onUpdateDetail(element)"><i
+                                                                        class="material-icons">create</i></a>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Delete">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <a style="padding-top: 3px;" title="Xóa"
+                                                                    class="mb-6 btn-floating waves-effect waves-light red"
+                                                                    (click)="onDeleteDetail(element)"><i
+                                                                        class="material-icons">delete_outline</i></a>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="WarehouseExportDetailSource">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                &nbsp;&nbsp;&nbsp;
+                                                                <a title="Phiếu nhập hàng"
+                                                                    (click)="onWarehouseExportDetailSource(element)"
+                                                                    style="padding-top: 3px;"
+                                                                    class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                                        class="material-icons">assignment</i></a>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="loading">
+                                                            <mat-footer-cell *matFooterCellDef colspan="4">
+                                                                Đang tải dữ liệu...
+                                                            </mat-footer-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="noData">
+                                                            <mat-footer-cell *matFooterCellDef colspan="4">
+                                                                Chưa có dữ liệu.
+                                                            </mat-footer-cell>
+                                                        </ng-container>
+                                                        <mat-header-row *matHeaderRowDef="displayColumnsBiBen">
+                                                        </mat-header-row>
+                                                        <mat-row *matRowDef="let row; columns: displayColumnsBiBen;">
+                                                        </mat-row>
+                                                        <mat-footer-row *matFooterRowDef="['loading']"
+                                                            [ngClass]="{'hide':dataSourceBiBen!=null}">
+                                                        </mat-footer-row>
+                                                        <mat-footer-row *matFooterRowDef="['noData']"
+                                                            [ngClass]="{'hide':!(dataSourceBiBen!=null && dataSourceBiBen.data.length==0)}">
+                                                        </mat-footer-row>
+                                                    </mat-table>
+                                                    <!-- <mat-paginator [pageSizeOptions]="[10,20,50,100]" [pageSize]="10" [showFirstLastButtons]>
+                                                        </mat-paginator> -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="3">
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <input name="ID" [(ngModel)]="warehouseExportService.formDataVyTam.ID"
+                                                type="hidden">
+                                            <div class="card-title">
+                                                <div class="col s6 m6 l3">
+                                                    <h3 class="card-title">VT (01)
+                                                    </h3>
+                                                </div>
+                                                <div class="col s6 m6 l9">
+                                                    <a title="Danh sách"
+                                                        href="javascript:window.open('','_self').close();"
+                                                        style="padding-top: 3px;"
+                                                        class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                            class="material-icons">arrow_back</i></a>&nbsp;&nbsp;&nbsp;
+                                                    <a title="Thanh toán"
+                                                            (click)="onWarehouseExportPayment(warehouseExportService.formDataVyTam.ID)"
+                                                            style="padding-top: 3px;"
+                                                            class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                                class="material-icons">attach_money</i></a>&nbsp;&nbsp;&nbsp;
+                                                    <button title="Lưu phiếu" type="submit" style="padding-top: 3px;"
+                                                        class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                                                            class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col s6 m6 l6">
+                                                    <div class="input-field">
+                                                        <label for="DateFounded">Ngày lập:
+                                                            <b>{{warehouseExportService.formDataVyTam.DateFounded |
+                                                                date:
+                                                                'yyyy-MM-dd' }}</b></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col s6 m6 l6">
+                                                    <input
+                                                        [(ngModel)]="warehouseExportService.formDataVyTam.DateFounded"
+                                                        name="DateFounded" type="date" datetime="yyyy-MM-dd"
+                                                        style="padding-top:8px; padding-bottom:2px; text-align: right;">
+                                                    <br />
+                                                    <br />
+                                                </div>
+                                                <div class="col s12 m12 l6">
+                                                    <div class="input-field">
+                                                        <p>
+                                                            <label>
+                                                                <input type="checkbox" class="filled-in" name="Active"
+                                                                    [(ngModel)]="warehouseExportService.formDataVyTam.Active" />
+                                                                <span>Kích hoạt</span>
+                                                            </label>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col s12 m12 l6">
+                                                    <div class="input-field">
+                                                        <p style="text-align: right; color: red; font-weight: bold;">
+                                                            Tổng cộng: {{warehouseExportService.formDataVyTam.TotalFinal
+                                                            | number:
+                                                            '1.0-0'}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="Code">Code</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <div class="input-field">
+                                                    <input placeholder="Code" name="Code"
+                                                        [(ngModel)]="warehouseExportService.formDataVyTam.Code"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="Name">Mã đơn hàng</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <div class="input-field">
+                                                    <input placeholder="Mã đơn hàng (nếu có)" name="Name"
+                                                        [(ngModel)]="warehouseExportService.formDataVyTam.Name"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="CustomerDisplay">Đại lý</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <input placeholder="Đại lý" name="CustomerDisplay" disabled
+                                                    [(ngModel)]="warehouseExportService.formDataVyTam.CustomerDisplay"
+                                                    type="text">
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="CustomerPhone">Điện thoại</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <div class="input-field">
+                                                    <input placeholder="Điện thoại" name="CustomerPhone"
+                                                        [(ngModel)]="warehouseExportService.formDataVyTam.CustomerPhone"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="AddressDelivery">Địa chỉ giao hàng</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <div class="input-field">
+                                                    <input placeholder="Địa chỉ giao hàng" name="AddressDelivery"
+                                                        [(ngModel)]="warehouseExportService.formDataVyTam.AddressDelivery"
+                                                        type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="CompanyDisplay">Công ty</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <input placeholder="Đại lý" name="CompanyDisplay" disabled
+                                                    [(ngModel)]="warehouseExportService.formDataVyTam.CompanyDisplay"
+                                                    type="text">
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="StatusID">Trạng thái</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <mat-select
+                                                    style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                                    name="StatusID" class="browser-default"
+                                                    [(ngModel)]="warehouseExportService.formDataVyTam.StatusID">
+                                                    <mat-option *ngFor="let item of statusService.list"
+                                                        [value]="item.ID">
+                                                        {{item.Display}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <br />
+                                                <br />
+                                            </div>
+                                            <div class="col s6 m6 l4">
+                                                <div class="input-field">
+                                                    <label for="UserFoundedID">Người lập</label>
+                                                </div>
+                                            </div>
+                                            <div class="col s6 m6 l8">
+                                                <mat-select
+                                                    style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                                    name="UserFoundedID" class="browser-default"
+                                                    [(ngModel)]="warehouseExportService.formDataVyTam.UserFoundedID">
+                                                    <mat-option *ngFor="let item of membershipService.list"
+                                                        [value]="item.ID">
+                                                        {{item.Display}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <br />
+                                                <br />
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col s12 m12 l8">
+                                            <div class="card-title">
+                                                <div class="row">
+                                                    <div class="col s6 m6 l9">
+                                                        <h3 class="card-title">Chi tiết (02)
+                                                        </h3>
+                                                    </div>
+                                                    <div class="col s4 m4 l3">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col s12 m12 l6">
+                                                        <label for="ProductID"></label>
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <label for="Quantity">Số lượng</label>
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <label for="Price">Đơn giá (Tự động)</label>
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                    </div>
+                                                    <div class="col s12 m12 l6">
+                                                        <mat-select
+                                                            style="font-size: 16px; padding-top:0px; padding-bottom:14px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                                            name="productID" class="browser-default"
+                                                            [(ngModel)]="warehouseExportDetailService.formDataVyTam.ProductID">
+                                                            <input (keyup)="onFilterProductVyTam($event.target.value)">
+                                                            <mat-option *ngFor="let item of productService.listVyTam"
+                                                                [value]="item.ID">
+                                                                {{item.Display}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <input matInput
+                                                            [(ngModel)]="warehouseExportDetailService.formDataVyTam.Quantity"
+                                                            placeholder="Số lượng"
+                                                            class="mat-input-element mat-form-field-autofill-control"
+                                                            type="number" style="text-align: right;">
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <input matInput
+                                                            [(ngModel)]="warehouseExportDetailService.formDataVyTam.Price"
+                                                            placeholder="Đơn giá"
+                                                            class="mat-input-element mat-form-field-autofill-control"
+                                                            type="number" style="text-align: right;">
+                                                    </div>
+                                                    <div class="col s12 m12 l2">
+                                                        <a title="Thêm chi tiết" type="submit" style="padding-top: 3px;"
+                                                            class="mb-6 btn-floating waves-effect waves-light cyan"
+                                                            (click)="onAddDetailVyTam()"><i
+                                                                class="material-icons">add</i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="KhungOverflow">
+                                                    <mat-table [dataSource]="dataSourceVyTam" matSort>
+                                                        <ng-container matColumnDef="ProductDisplay">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Thành
+                                                                phẩm
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <img width="20%" [src]="element.ProductImageURL">
+                                                                <b>{{element.ProductDisplay}}</b>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="UnitDisplay">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>ĐVT
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <div>
+                                                                    {{element.UnitDisplay}}
+                                                                </div>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Quantity">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Số lượng
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <input matInput [(ngModel)]="element.Quantity"
+                                                                    placeholder="Số lượng" type="number"
+                                                                    style="text-align: right;">&nbsp;&nbsp;&nbsp;
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Price">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Đơn giá
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <input matInput [(ngModel)]="element.Price"
+                                                                    placeholder="Đơn giá" type="number"
+                                                                    style="text-align: right;">
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Total">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Tổng cộng
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <b style="text-align: right; width: 100px;">
+                                                                    {{element.Total | number: '1.0-0'}}
+                                                                </b>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Save">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <a title="Lưu chi tiết" type="submit"
+                                                                    style="padding-top: 3px; margin-left: 10px;"
+                                                                    class="mb-6 btn-floating waves-effect waves-light cyan"
+                                                                    (click)="onUpdateDetail(element)"><i
+                                                                        class="material-icons">create</i></a>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="Delete">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                <a style="padding-top: 3px;" title="Xóa"
+                                                                    class="mb-6 btn-floating waves-effect waves-light red"
+                                                                    (click)="onDeleteDetail(element)"><i
+                                                                        class="material-icons">delete_outline</i></a>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="WarehouseExportDetailSource">
+                                                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                            </mat-header-cell>
+                                                            <mat-cell *matCellDef="let element">
+                                                                &nbsp;&nbsp;&nbsp;
+                                                                <a title="Phiếu nhập hàng"
+                                                                    (click)="onWarehouseExportDetailSource(element)"
+                                                                    style="padding-top: 3px;"
+                                                                    class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                                        class="material-icons">assignment</i></a>
+                                                            </mat-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="loading">
+                                                            <mat-footer-cell *matFooterCellDef colspan="4">
+                                                                Đang tải dữ liệu...
+                                                            </mat-footer-cell>
+                                                        </ng-container>
+                                                        <ng-container matColumnDef="noData">
+                                                            <mat-footer-cell *matFooterCellDef colspan="4">
+                                                                Chưa có dữ liệu.
+                                                            </mat-footer-cell>
+                                                        </ng-container>
+                                                        <mat-header-row *matHeaderRowDef="displayColumnsVyTam">
+                                                        </mat-header-row>
+                                                        <mat-row *matRowDef="let row; columns: displayColumnsVyTam;">
+                                                        </mat-row>
+                                                        <mat-footer-row *matFooterRowDef="['loading']"
+                                                            [ngClass]="{'hide':dataSourceVyTam!=null}">
+                                                        </mat-footer-row>
+                                                        <mat-footer-row *matFooterRowDef="['noData']"
+                                                            [ngClass]="{'hide':!(dataSourceVyTam!=null && dataSourceVyTam.data.length==0)}">
+                                                        </mat-footer-row>
+                                                    </mat-table>
+                                                    <!-- <mat-paginator [pageSizeOptions]="[10,20,50,100]" [pageSize]="10" [showFirstLastButtons]>
+                                                        </mat-paginator> -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

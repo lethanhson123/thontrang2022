@@ -1,0 +1,70 @@
+<form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+    <div class="col s6 m6 l9">
+        <h3 class="card-title"><b>Xe: {{truckService.formData.Name}}</b></h3>
+    </div>
+    <div class="col s6 m6 l3">
+        <button title="Lưu thay đổi" type="submit" class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;
+        <a title="Đóng" class="mb-6 btn-floating waves-effect waves-light purple lightrn-1" (click)="onClose()">
+            <i class="material-icons">close</i>
+        </a>
+    </div>
+    <input name="ID" [(ngModel)]="truckService.formData.ID" type="hidden">    
+    <div class="col s6 m6 l6">
+        <div class="col s4 m4 l4">
+            <div class="input-field">
+                <label for="NumberControl">Xe</label>
+            </div>
+        </div>
+        <div class="col s8 m8 l8">
+            <div class="input-field">
+                <input placeholder="Xe" name="NumberControl" [(ngModel)]="truckService.formData.NumberControl" type="text">
+            </div>
+        </div>  
+        <div class="col s4 m4 l4">
+            <div class="input-field">
+                <label for="Driver">Lái xe</label>
+            </div>
+        </div>
+        <div class="col s8 m8 l8">
+            <div class="input-field">
+                <input placeholder="Lái xe" name="Driver" [(ngModel)]="truckService.formData.Driver" type="text">
+            </div>
+        </div>  
+        <div class="col s4 m4 l4">
+            <div class="input-field">
+                <label for="Phone">Điện thoại</label>
+            </div>
+        </div>
+        <div class="col s8 m8 l8">
+            <div class="input-field">
+                <input placeholder="Điện thoại" name="Phone" [(ngModel)]="truckService.formData.Phone" type="text">
+            </div>
+        </div>  
+    </div>
+    <div class="col s6 m6 l6">
+        <div class="col s4 m4 l4">
+            <div class="input-field">
+                <label for="Weight">Tải trọng (kg)</label>
+            </div>
+        </div>
+        <div class="col s8 m8 l8">
+            <div class="input-field">
+                <input placeholder="Tải trọng (kg)" name="Weight" [(ngModel)]="truckService.formData.Weight" type="number">
+            </div>
+        </div>  
+        <div class="col s12 m12 l12">
+            <div class="col s6 m6 l3">
+                <div class="input-field">
+                    <p>
+                        <label>
+                            <input type="checkbox" class="filled-in" name="Active"
+                                [(ngModel)]="truckService.formData.Active" />
+                            <span>Kích hoạt</span>
+                        </label>
+                    </p>
+                </div>
+            </div>           
+        </div>
+    </div>
+</form>

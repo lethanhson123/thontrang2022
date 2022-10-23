@@ -1,0 +1,112 @@
+<div class="row">
+    <div id="breadcrumbs-wrapper" data-image="https://crm.thontrang.com/app-assets/images/gallery/breadcrumb-bg.jpg"
+        style="color: #ffffff; background: rgb(40,70,99); background: linear-gradient(90deg, rgba(40,70,99,1) 0%, rgba(62,110,159,1) 35%, rgba(106,179,245,1) 100%);">
+        <!-- Search for small screen-->
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <h5 class="breadcrumbs-title mt-0 mb-0" style="color: #ffffff;">Đặt hàng</h5>
+                </div>
+                <div class="col s12 m6 l6 right-align-md">
+                    <ol class="breadcrumbs mb-0">
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">CRM</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">Đơn hàng</a>
+                        </li>
+                        <li class="breadcrumb-item active" style="color: #ffffff;">Đặt hàng
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12">
+        <div class="container">
+            <div class="section">
+                <div class="row" id="ecommerce-products">
+                    <div class="col s12 m12 l12">
+                        <div class="col s12 m12 l4">
+                            <mat-select
+                                style="padding-top:14px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                name="parentID" class="browser-default" [(ngModel)]="parentID"
+                                (selectionChange)="onChangeMembershipCustomer($event)">
+                                <input (keyup)="onFilterMembershipCustomer($event.target.value)">
+                                <mat-option *ngFor="let item of membershipCustomerService.list"
+                                    [value]="item.CustomerID">
+                                    {{item.CustomerName}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                        <div class="col s12 m12 l3">
+                            <input matInput [(ngModel)]="searchString" placeholder="Tìm ..."
+                                class="mat-input-element mat-form-field-autofill-control" autocomplete="off">
+                        </div>
+                        <div class="col s6 m6 l3">
+                            <div class="input-field">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" class="filled-in" name="isWishlist"
+                                            [(ngModel)]="isWishlist" />
+                                        <span>Yêu thích</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col s6 m6 l2">
+                            <a title="Tìm" (click)="onSearch()"
+                                class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                    class="material-icons">search</i></a>&nbsp;&nbsp;&nbsp;
+                            <a title="Lưu thay đổi" class="mb-6 btn-floating waves-effect waves-light cyan"
+                                (click)="onSaveOrrder()"><i class="material-icons">save</i></a>
+                        </div>
+                        <div class="col s12 m12 l3" *ngFor="let item of customerPriceService.list; let i = index;">
+                            <div class="card animate fadeLeft" style="min-height: 200px;">
+                                <div class="card-badge" *ngIf="item.IsWishlist"><a class="white-text"> <b>Yêu thích</b>
+                                    </a></div>
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="col s12 m12 l4">
+                                            <a class="modal-trigger" href="#" title="{{item.ProductDisplay}}"><img
+                                                    src="{{item.ProductImageURL}}" class="responsive-img"
+                                                    alt="{{item.ProductDisplay}}" title="{{item.ProductDisplay}}"
+                                                    width="100%"></a>
+                                        </div>
+                                        <div class="col s12 m12 l8">
+                                            <br />
+                                            <a href="#" title="{{item.ProductDisplay}}">
+                                                <p>{{item.ProductDisplay}} <b
+                                                        style="color: #000000;">({{item.Note}})</b></p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12 l3">
+                                            <p style="font-size: 16px; font-weight: bolder; padding-top: 10px;">
+                                                {{item.Price | number: '1.0-0' }}</p>
+                                        </div>
+                                        <div class="col s12 m12 l3">
+                                            <input matInput [(ngModel)]="item.SortOrder"
+                                                class="mat-input-element mat-form-field-autofill-control" type="number"
+                                                style="text-align: right;">
+                                        </div>
+                                        <div class="col s12 m12 l6">
+                                            <a title="Lưu thay đổi"
+                                                class="mb-6 btn-floating waves-effect waves-light cyan"
+                                                (click)="onSaveOrderDetail(item)"><i
+                                                    class="material-icons">add_shopping_cart</i></a>&nbsp;
+                                                    <a title="Yêu thích"
+                                                class="mb-6 btn-floating waves-effect waves-light purple"
+                                                (click)="onSaveCustomerPrice(item)"><i
+                                                    class="material-icons">favorite_border</i></a>  
+                                        </div>                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="isShowLoading"></app-loading>

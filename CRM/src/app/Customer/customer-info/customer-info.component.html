@@ -1,0 +1,216 @@
+<div class="row">
+    <div id="breadcrumbs-wrapper" data-image="https://crm.thontrang.com/app-assets/images/gallery/breadcrumb-bg.jpg"
+        style="color: #ffffff; background: rgb(40,70,99); background: linear-gradient(90deg, rgba(40,70,99,1) 0%, rgba(62,110,159,1) 35%, rgba(106,179,245,1) 100%);">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <h5 class="breadcrumbs-title mt-0 mb-0" style="color: #ffffff;">Đại lý</h5>
+                </div>
+                <div class="col s12 m6 l6 right-align-md">
+                    <ol class="breadcrumbs mb-0">
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">CRM</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">Đại lý</a>
+                        </li>
+                        <li class="breadcrumb-item active" style="color: #ffffff;">Chi tiết
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12">
+        <div id="input-fields" class="card card-tabs">
+            <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+                <div class="card-content">
+                    <div class="card-title">
+                        <div class="row">
+                            <div class="col s6 m6 l9">
+                                <h3 class="card-title">Đại lý:
+                                    <b>{{customerService.formData.Name}}</b>
+                                </h3>
+                            </div>
+                            <div class="col s4 m4 l3">
+                                <a title="Danh sách" href="javascript:window.open('','_self').close();"
+                                    style="padding-top: 3px;"
+                                    class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                        class="material-icons">arrow_back</i></a>&nbsp;&nbsp;&nbsp;
+                                <button title="Lưu thay đổi" type="submit" style="padding-top: 3px;"
+                                    class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                                        class="material-icons">save</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ItemInfo">
+                        <input name="ID" [(ngModel)]="customerService.formData.ID" type="hidden">
+                        <div class="row">
+                            <div class="col s12 m12 l6">
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Name">Đại lý</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Đại lý" name="Name"
+                                            [(ngModel)]="customerService.formData.Name" type="text">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Display">Hiển thị</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Hiển thị" name="Display"
+                                            [(ngModel)]="customerService.formData.Display" type="text">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="TaxCode">Mã số thuế</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Mã số thuế" name="TaxCode"
+                                            [(ngModel)]="customerService.formData.TaxCode" type="text">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Phone">Điện thoại</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Điện thoại" name="Phone"
+                                            [(ngModel)]="customerService.formData.Phone" type="text">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Email">Email</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Email" name="Email"
+                                            [(ngModel)]="customerService.formData.Email" type="text">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Address">Địa chỉ</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Address" name="Address"
+                                            [(ngModel)]="customerService.formData.Address" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m12 l6">
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="ParentID">Loại đại lý</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select
+                                        style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                        name="ParentID" [(ngModel)]="customerService.formData.ParentID">
+                                        <mat-option *ngFor="let item of customerCategoryService.list" [value]="item.ID">
+                                            {{item.Display}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <br />
+                                    <br />
+                                </div>
+
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="ParentID">Tỉnh</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select
+                                        style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                        name="ProvinceID" class="browser-default"
+                                        [(ngModel)]="customerService.formData.ProvinceID" (selectionChange)="onChangeProvince($event)">
+                                        <mat-option *ngFor="let item of provinceService.list" [value]="item.ID">
+                                            {{item.Display}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <br />
+                                    <br />
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="UnitID">Huyện</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select
+                                        style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                        name="DistrictID" class="browser-default"
+                                        [(ngModel)]="customerService.formData.DistrictID" (selectionChange)="onChangeDistrict($event)">
+                                        <mat-option *ngFor="let item of districtService.list" [value]="item.ID">
+                                            {{item.Display}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <br />
+                                    <br />
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="UnitID">Xã</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select
+                                        style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                        name="WardID" class="browser-default"
+                                        [(ngModel)]="customerService.formData.WardID">
+                                        <mat-option *ngFor="let item of wardService.list" [value]="item.ID">
+                                            {{item.Display}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <br />
+                                    <br />
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="DateJoin">Ngày tham gia: <b>{{customerService.formData.DateJoin | date: 'yyyy-MM-dd' }}</b></label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <input [(ngModel)]="customerService.formData.DateJoin" name="DateJoin" type="date" datetime="yyyy-MM-dd"
+                                        style="padding-top:8px; padding-bottom:2px;">                                                                           
+                                    <br />
+                                    <br />
+                                </div>
+
+                                <div class="col s12 m12 l12">
+                                    <div class="input-field">
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" class="filled-in" name="Active"
+                                                    [(ngModel)]="customerService.formData.Active" />
+                                                <span>Kích hoạt</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="isShowLoading"></app-loading>

@@ -1,0 +1,268 @@
+<div class="row">
+    <div id="breadcrumbs-wrapper" data-image="https://crm.thontrang.com/app-assets/images/gallery/breadcrumb-bg.jpg"
+        style="color: #ffffff; background: rgb(40,70,99); background: linear-gradient(90deg, rgba(40,70,99,1) 0%, rgba(62,110,159,1) 35%, rgba(106,179,245,1) 100%);">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <h5 class="breadcrumbs-title mt-0 mb-0" style="color: #ffffff;">Thành phẩm</h5>
+                </div>
+                <div class="col s12 m6 l6 right-align-md">
+                    <ol class="breadcrumbs mb-0">
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">CRM</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">Thành phẩm</a>
+                        </li>
+                        <li class="breadcrumb-item active" style="color: #ffffff;">Chi tiết
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12">
+        <div id="input-fields" class="card card-tabs">
+            <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+                <div class="card-content">
+                    <div class="card-title">
+                        <div class="row">
+                            <div class="col s6 m6 l9">
+                                <h3 class="card-title">Thành phẩm:
+                                    <b>{{productService.formData.Name}}</b>
+                                </h3>
+                            </div>
+                            <div class="col s4 m4 l3">
+                                <a title="Danh sách" href="javascript:window.open('','_self').close();"
+                                    style="padding-top: 3px;"
+                                    class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                        class="material-icons">arrow_back</i></a>&nbsp;&nbsp;&nbsp;
+                                <button title="Lưu thay đổi" type="submit" style="padding-top: 3px;"
+                                    class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                                        class="material-icons">save</i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ItemInfo">
+                        <input name="ID" [(ngModel)]="productService.formData.ID" type="hidden">
+                        <input name="ImageFileName" [(ngModel)]="productService.formData.ImageFileName" type="hidden">
+                        <div class="row">
+                            <div class="col s12 m12 l4">
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Name">Thành phẩm</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Thành phẩm" name="Name"
+                                            [(ngModel)]="productService.formData.Name" type="text">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="NameOriginal">Gốc thuốc</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Gốc thuốc" name="NameOriginal"
+                                            [(ngModel)]="productService.formData.NameOriginal" type="text">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Specifications">Quy cách</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Quy cách" name="Specifications"
+                                            [(ngModel)]="productService.formData.Specifications" type="text">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="NameSpecial">Phân biệt</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Đặc biệt" name="NameSpecial"
+                                            [(ngModel)]="productService.formData.NameSpecial" type="text">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="SpecificationsNumber">Quy cách (Thùng)</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Quy cách (Thùng)" name="SpecificationsNumber" style="text-align: right;"
+                                            [(ngModel)]="productService.formData.SpecificationsNumber" type="number">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Weight">Trọng lượng (kg)</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Trọng lượng (kg)" name="Weight" style="text-align: right;"
+                                            [(ngModel)]="productService.formData.Weight" type="number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m12 l4">
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="CompanyID">Công ty</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select
+                                        style="padding-top:20px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                        name="CompanyID" class="browser-default"
+                                        [(ngModel)]="productService.formData.CompanyID">
+                                        <mat-option *ngFor="let item of companyService.list" [value]="item.ID">
+                                            {{item.Display}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <br />
+                                    <br />
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="ParentID">Danh mục</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select
+                                        style="padding-top:20px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                        name="ParentID" class="browser-default"
+                                        [(ngModel)]="productService.formData.ParentID">
+                                        <mat-option *ngFor="let item of productCategoryService.list" [value]="item.ID">
+                                            {{item.Display}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <br />
+                                    <br />
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="UnitID">Đơn vị tính</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select
+                                        style="padding-top:20px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                        name="UnitID" class="browser-default"
+                                        [(ngModel)]="productService.formData.UnitID">
+                                        <mat-option *ngFor="let item of unitService.list" [value]="item.ID">
+                                            {{item.Display}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <br />
+                                    <br />
+                                </div>
+                                <div class="col s12 m12 l12">
+                                    <div class="input-field">
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" class="filled-in" name="Active"
+                                                    [(ngModel)]="productService.formData.Active" />
+                                                <span>Kích hoạt</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col s12 m12 l12">
+                                    <input multiple type="file" accept="image/*"
+                                        (change)="changeImage($event.target.files)">
+                                    <br />
+                                    <br />
+                                    <a target="_blank" href="{{productService.formData.ImageURL}}"
+                                        *ngIf="productService.formData.ImageURL"
+                                        title="{{productService.formData.ImageURL}}">
+                                        <img class="responsive-img" width="30%"
+                                            title="{{productService.formData.ImageURL}}"
+                                            alt="{{productService.formData.ImageURL}}"
+                                            [src]="productService.formData.ImageURL"></a>
+                                </div>
+                            </div>
+                            <div class="col s12 m12 l4">
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="QuantityImport">Nhập (Thùng)</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input name="QuantityImport" disabled style="text-align: right;"
+                                            [(ngModel)]="productService.formData.QuantityImport" type="number">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="QuantityImport02">Nhập lẻ</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input name="QuantityImport02" disabled style="text-align: right;"
+                                            [(ngModel)]="productService.formData.QuantityImport02" type="number">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="QuantityExport">Xuất (Thùng)</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input name="QuantityExport" disabled style="text-align: right;"
+                                            [(ngModel)]="productService.formData.QuantityExport" type="number">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="QuantityExport02">Xuất lẻ</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input name="QuantityExport02" disabled style="text-align: right;"
+                                            [(ngModel)]="productService.formData.QuantityExport02" type="number">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="QuantityInStock">Tồn (Thùng)</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input name="QuantityInStock" disabled style="text-align: right;"
+                                            [(ngModel)]="productService.formData.QuantityInStock" type="number">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="QuantityInStock02">Tồn lẻ</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input name="QuantityInStock02" disabled style="text-align: right;"
+                                            [(ngModel)]="productService.formData.QuantityInStock02" type="number">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="isShowLoading"></app-loading>

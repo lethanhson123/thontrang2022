@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\LeThanhSon\publish\api.thontrang.com</_PublishTargetUrl>
+    <History>True|2022-09-15T08:33:23.0571812Z;True|2022-09-15T15:28:54.1504490+07:00;True|2022-09-15T15:23:58.8045345+07:00;True|2022-09-13T21:19:02.8735435+07:00;True|2022-09-13T20:47:24.2628049+07:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

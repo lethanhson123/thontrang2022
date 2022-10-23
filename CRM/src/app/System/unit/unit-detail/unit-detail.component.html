@@ -1,0 +1,50 @@
+<form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+    <div class="col s6 m6 l9">
+        <h3 class="card-title"><b>Đơn vị tính: {{unitService.formData.Name}}</b></h3>
+    </div>
+    <div class="col s6 m6 l3">
+        <button title="Lưu thay đổi" type="submit" class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;
+        <a title="Đóng" class="mb-6 btn-floating waves-effect waves-light purple lightrn-1" (click)="onClose()">
+            <i class="material-icons">close</i>
+        </a>
+    </div>
+    <input name="ID" [(ngModel)]="unitService.formData.ID" type="hidden">    
+    <div class="col s6 m6 l6">
+        <div class="col s4 m4 l4">
+            <div class="input-field">
+                <label for="Name">Đơn vị tính</label>
+            </div>
+        </div>
+        <div class="col s8 m8 l8">
+            <div class="input-field">
+                <input placeholder="Đơn vị tính" name="Name" [(ngModel)]="unitService.formData.Name" type="text">
+            </div>
+        </div>  
+        <div class="col s4 m4 l4">
+            <div class="input-field">
+                <label for="Display">Hiển thị (Tự động)</label>
+            </div>
+        </div>
+        <div class="col s8 m8 l8">
+            <div class="input-field">
+                <input placeholder="Hiển thị (Tự động)" name="Display" [(ngModel)]="unitService.formData.Display" type="text">
+            </div>
+        </div>  
+    </div>
+    <div class="col s6 m6 l6">
+        <div class="col s12 m12 l12">
+            <div class="col s6 m6 l3">
+                <div class="input-field">
+                    <p>
+                        <label>
+                            <input type="checkbox" class="filled-in" name="Active"
+                                [(ngModel)]="unitService.formData.Active" />
+                            <span>Kích hoạt</span>
+                        </label>
+                    </p>
+                </div>
+            </div>           
+        </div>
+    </div>
+</form>

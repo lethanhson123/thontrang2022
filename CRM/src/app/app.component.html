@@ -1,0 +1,92 @@
+<div class="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 2-columns mat-typography"
+      data-open="click" data-menu="vertical-menu-nav-dark" data-col="2-column">
+      <header class="page-topbar" id="header">
+            <div class="navbar navbar-fixed">
+                  <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-light">
+                        <div class="nav-wrapper">
+                              <ul class="navbar-list right">
+                                    <li><a class="waves-effect waves-block waves-light notification-button"
+                                                href="javascript:void(0);" data-target="notifications-dropdown"><i
+                                                      class="material-icons">shopping_cart<small
+                                                            class="notification-badge"
+                                                            *ngIf="orderDetailService.listShoppingCart">{{orderDetailService.listShoppingCart.length}}</small></i></a>
+                                    </li>
+                                    <li><a class="waves-effect waves-block waves-light profile-button"
+                                                href="javascript:void(0);" data-target="profile-dropdown"><span
+                                                      class="avatar-status avatar-online"><img
+                                                            src="https://crm.thontrang.com/images/logo100.png"
+                                                            alt="avatar"><i></i></span></a></li>
+                                    <li><a class="waves-effect waves-block waves-light sidenav-trigger" href="#"
+                                                data-target="slide-out-right"><i
+                                                      class="material-icons">format_indent_increase</i></a></li>
+                              </ul>
+                              <!-- translation-button-->
+                              <ul class="dropdown-content" id="translation-dropdown">
+
+                              </ul>
+                              <!-- notifications-dropdown-->
+                              <ul class="dropdown-content" id="notifications-dropdown"
+                                    *ngIf="orderDetailService.listShoppingCart">
+                                    <li>
+                                          <h3>Giỏ hàng<span
+                                                      class="new badge">{{orderDetailService.listShoppingCart.length}}</span>
+                                          </h3>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li *ngFor="let item of orderDetailService.listShoppingCart; let i = index;">
+                                          <a class="grey-text text-darken-2" href="#!"><span
+                                                      class="material-icons icon-bg-circle cyan small">add_shopping_cart</span>
+                                                {{item.ProductDisplay}} ({{item.Quantity}})
+                                          </a>
+                                    </li>
+                              </ul>
+                              <!-- profile-dropdown-->
+                              <ul class="dropdown-content" id="profile-dropdown">                                                                  
+                                    <li style="width: 200px;"><a class="grey-text text-darken-1" href="{{domainName}}ChangePassword"><i
+                                                      class="material-icons">lock_outline</i> Đổi mật khẩu</a></li>
+                                    <li style="width: 200px;"><a class="grey-text text-darken-1" (click)="onLogout()"><i
+                                                      class="material-icons">keyboard_tab</i>
+                                                Đăng xuất</a></li>
+                              </ul>
+                        </div>
+                        <nav class="display-none search-sm">
+                              <div class="nav-wrapper">
+                              </div>
+                        </nav>
+                  </nav>
+            </div>
+      </header>
+      <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-dark sidenav-active-rounded">
+            <div class="brand-sidebar">
+                  <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="#" style="color:#009f3c;"><span
+                                    class="logo-text hide-on-med-and-down" style="color:#009f3c;">CRM
+                                    | Thôn Trang</span></a><a class="navbar-toggler" href="#"><i
+                                    class="material-icons">radio_button_checked</i></a></h1>
+            </div>
+            <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow"
+                  id="slide-out" data-menu="menu-navigation" data-collapsible="accordion">
+
+                  <li class="bold" *ngFor="let item of membershipSystemMenuService.listParent;">
+                        <a class="collapsible-header waves-effect waves-cyan "><i
+                                    class="material-icons">{{item.Icon}}</i><span class="menu-title"
+                                    data-i18n="">{{item.SystemMenuName}}</span></a>
+                        <div class="collapsible-body">
+                              <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                                    <li *ngFor="let itemChild of membershipSystemMenuService.listChild;">
+                                          <a *ngIf="itemChild.SystemMenuParentID==item.SystemMenuID"
+                                                class="collapsible-body" href="{{domainName}}{{itemChild.Controller}}"
+                                                data-i18n=""><i
+                                                      class="material-icons">{{itemChild.Icon}}</i><span>{{itemChild.SystemMenuName}}</span></a>
+                                    </li>
+                              </ul>
+                        </div>
+                  </li>
+            </ul>
+            <div class="navigation-background"></div><a
+                  class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only"
+                  href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
+      </aside>
+      <div id="main">
+            <router-outlet></router-outlet>
+      </div>
+</div>

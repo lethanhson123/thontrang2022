@@ -1,0 +1,37 @@
+
+
+<div id="login-page" class="row"
+    style="background-image: url('https://crm.thontrang.com/images/flat-bg.jpg'); background-repeat: no-repeat; -webkit-background-size: cover; background-size: cover;">
+    <div class="col s10 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
+        <form class="login-form">
+            <div class="row">
+                <div class="input-field col s12" style="text-align: center;">
+                    <img alt="thontrang.com" title="thontrang.com" class="responsive-img" width="50%" src="https://crm.thontrang.com/images/logo200.png" />
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix pt-2">phone</i>
+                    <input autofocus cdkFocusInitial placeholder="Điện thoại" name="account" [(ngModel)]="account">                                     
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix pt-2">lock_outline</i>                    
+                    <input placeholder="Mật khẩu" name="password" [(ngModel)]="password" type="password">                                        
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button (click)="onLogin()" [disabled]="account === '' || password === ''" class="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12">Đăng
+                        nhập</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    <p class="margin medium-small">Hỗ trợ: <a href="tel:0937843970" title="0937843970">0937843970</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,132 @@
+<div class="row">
+    <div id="breadcrumbs-wrapper" data-image="https://crm.thontrang.com/app-assets/images/gallery/breadcrumb-bg.jpg"
+        style="color: #ffffff; background: rgb(40,70,99); background: linear-gradient(90deg, rgba(40,70,99,1) 0%, rgba(62,110,159,1) 35%, rgba(106,179,245,1) 100%);">
+        <!-- Search for small screen-->
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <h5 class="breadcrumbs-title mt-0 mb-0" style="color: #ffffff;">Công nợ <span
+                            *ngIf="customerService.list">({{customerService.list.length}} items)</span></h5>
+                </div>
+                <div class="col s12 m6 l6 right-align-md">
+                    <ol class="breadcrumbs mb-0">
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">CRM</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">Công nợ</a>
+                        </li>
+                        <li class="breadcrumb-item active" style="color: #ffffff;">Danh sách
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="col s6 m6 l9">
+                            <input matInput [(ngModel)]="searchString" placeholder="Tìm ..."
+                                class="mat-input-element mat-form-field-autofill-control" autocomplete="off"
+                                (keyup.enter)="onSearch()">
+                        </div>
+                        <div class="col s6 m6 l3">
+                            <a title="Tìm" (click)="onSearch()"
+                                class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                    class="material-icons">search</i></a>&nbsp;&nbsp;&nbsp;
+                            <a title="Thêm mới" target="_blank" href="{{URLSub}}/0"
+                                class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                    class="material-icons">add</i></a>&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div class="KhungOverflow">
+                            <mat-table [dataSource]="dataSource" matSort>
+                                <ng-container matColumnDef="ID">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div>
+                                            {{element.ID}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="ParentName">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Cấp
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div>
+                                            {{element.ParentName}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="Name">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Đại lý
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"><b>{{element.Name}}</b></mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="DebtThonTrang">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Thôn Trang
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element" style="justify-content: right; padding-right: 10px; color: red;">
+                                        <div>
+                                            {{element.DebtThonTrang | number: '1.0-0'}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="DebtBiben">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Bi Ben
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element" style="justify-content: right; padding-right: 10px; color: red;">
+                                        <div>
+                                            {{element.DebtBiben | number: '1.0-0'}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="DebtVyTam">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Vỹ Tâm
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element" style="justify-content: right; padding-right: 10px; color: red;">
+                                        <div>
+                                            {{element.DebtVyTam | number: '1.0-0'}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="actions">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div style="padding-top: 5px; width: 100%; text-align: center;">
+                                            <a title="Chi tiết" target="_blank" href="{{URLSub}}/{{element.ID}}"
+                                                class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                    class="material-icons">info</i></a>
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="loading">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Đang tải dữ liệu...
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="noData">
+                                    <mat-footer-cell *matFooterCellDef colspan="4">
+                                        Chưa có dữ liệu.
+                                    </mat-footer-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
+                                <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource!=null}">
+                                </mat-footer-row>
+                                <mat-footer-row *matFooterRowDef="['noData']"
+                                    [ngClass]="{'hide':!(dataSource!=null && dataSource.data.length==0)}">
+                                </mat-footer-row>
+                            </mat-table>
+                            <!-- <mat-paginator [pageSizeOptions]="[10,20,50,100]" [pageSize]="10" [showFirstLastButtons]>
+                            </mat-paginator> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="isShowLoading"></app-loading>

@@ -1,0 +1,325 @@
+<div class="row">
+    <div id="breadcrumbs-wrapper" data-image="https://crm.thontrang.com/app-assets/images/gallery/breadcrumb-bg.jpg"
+        style="color: #ffffff; background: rgb(40,70,99); background: linear-gradient(90deg, rgba(40,70,99,1) 0%, rgba(62,110,159,1) 35%, rgba(106,179,245,1) 100%);">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <h5 class="breadcrumbs-title mt-0 mb-0" style="color: #ffffff;">Phiếu hủy hàng</h5>
+                </div>
+                <div class="col s12 m6 l6 right-align-md">
+                    <ol class="breadcrumbs mb-0">
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">CRM</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">Phiếu kho</a>
+                        </li>
+                        <li class="breadcrumb-item active" style="color: #ffffff;">Phiếu hủy hàng
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12">
+        <div id="input-fields" class="card card-tabs">
+            <div class="card-content">
+                <div id="ItemInfo">
+                    <div class="row">
+                        <div class="col s12 m12 l4">
+                            <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
+                                <input name="ID" [(ngModel)]="warehouseCancelService.formData.ID" type="hidden">
+                                <div class="card-title">
+                                    <div class="col s6 m6 l8">
+                                        <h3 class="card-title">Phiếu (Bước 01)
+                                        </h3>
+                                    </div>
+                                    <div class="col s6 m6 l4">
+                                        <a title="Danh sách" href="javascript:window.open('','_self').close();"
+                                            style="padding-top: 3px;"
+                                            class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                class="material-icons">arrow_back</i></a>&nbsp;&nbsp;&nbsp;
+                                        <button title="Lưu phiếu" type="submit" style="padding-top: 3px;"
+                                            class="mb-6 btn-floating waves-effect waves-light cyan"><i
+                                                class="material-icons">save</i></button>&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Code">Code</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Code" name="Code"
+                                            [(ngModel)]="warehouseCancelService.formData.Code" type="text">
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Name">Phiếu xuất hàng</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Phiếu xuất hàng (nếu có)" name="Name"
+                                            [(ngModel)]="warehouseCancelService.formData.Name" type="text">
+                                    </div>
+                                </div>
+                                <!-- <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="Note">Ghi chú</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <div class="input-field">
+                                        <input placeholder="Ghi chú" name="Note" [(ngModel)]="warehouseCancelService.formData.Note"
+                                            type="text">
+                                    </div>
+                                </div> -->
+
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="CustomerID">Đại lý</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select
+                                        style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                        name="CustomerID" class="browser-default"
+                                        [(ngModel)]="warehouseCancelService.formData.CustomerID"
+                                        (selectionChange)="onChangeCustomer($event)">
+                                        <mat-option *ngFor="let item of customerService.list" [value]="item.ID">
+                                            {{item.Display}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <br />
+                                    <br />
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="CompanyID">Công ty</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select
+                                        style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                        name="CompanyID" class="browser-default"
+                                        [(ngModel)]="warehouseCancelService.formData.CompanyID"
+                                        (selectionChange)="onChangeCompany($event)">
+                                        <mat-option *ngFor="let item of companyService.list" [value]="item.ID">
+                                            {{item.Display}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <br />
+                                    <br />
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="StatusID">Trạng thái</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select
+                                        style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                        name="StatusID" class="browser-default"
+                                        [(ngModel)]="warehouseCancelService.formData.StatusID">
+                                        <mat-option *ngFor="let item of statusService.list" [value]="item.ID">
+                                            {{item.Display}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <br />
+                                    <br />
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="UserFoundedID">Người lập</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select
+                                        style="padding-top:30px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                        name="UserFoundedID" class="browser-default"
+                                        [(ngModel)]="warehouseCancelService.formData.UserFoundedID">
+                                        <mat-option *ngFor="let item of membershipService.list" [value]="item.ID">
+                                            {{item.Display}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <br />
+                                    <br />
+                                </div>
+                                <div class="col s6 m6 l6">
+                                    <div class="input-field">
+                                        <label for="DateFounded">Ngày lập:
+                                            <b>{{warehouseCancelService.formData.DateFounded
+                                                |
+                                                date:
+                                                'yyyy-MM-dd' }}</b></label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l6">
+                                    <input [(ngModel)]="warehouseCancelService.formData.DateFounded" name="DateFounded"
+                                        type="date" datetime="yyyy-MM-dd"
+                                        style="padding-top:8px; padding-bottom:2px; text-align: right;">
+                                    <br />
+                                    <br />
+                                </div>
+                                <div class="col s12 m12 l6">
+                                    <div class="input-field">
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" class="filled-in" name="Active"
+                                                    [(ngModel)]="warehouseCancelService.formData.Active" />
+                                                <span>Kích hoạt</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col s12 m12 l6">
+                                    <div class="input-field">
+                                        <p style="text-align: right; color: red; font-weight: bold;">
+                                            {{warehouseCancelService.formData.TotalFinal | number: '1.0-0'}}</p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col s12 m12 l7">
+                            <div class="card-title">
+                                <div class="row">
+                                    <div class="col s6 m6 l9">
+                                        <h3 class="card-title">Chi tiết phiếu (Bước 02)
+                                        </h3>
+                                    </div>
+                                    <div class="col s4 m4 l3">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m12 l6">
+                                        <label for="ProductID"></label>
+                                    </div>                                   
+                                    <div class="col s12 m12 l2">
+                                        <label for="Quantity">Số lượng</label>
+                                    </div>
+                                    <div class="col s12 m12 l2">
+                                        <label for="Price">Đơn giá (Tự động)</label>
+                                    </div>
+                                    <div class="col s12 m12 l2">
+                                    </div>
+                                    <div class="col s12 m12 l6">
+                                        <mat-select
+                                            style="font-size: 16px; padding-top:0px; padding-bottom:14px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                            name="productID" class="browser-default"
+                                            [(ngModel)]="warehouseCancelDetailService.formData.ProductID">
+                                            <input (keyup)="onFilterProduct($event.target.value)">
+                                            <mat-option *ngFor="let item of productService.list" [value]="item.ID">
+                                                {{item.Display}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>                                  
+                                    <div class="col s12 m12 l2">
+                                        <input matInput [(ngModel)]="warehouseCancelDetailService.formData.Quantity"
+                                            placeholder="Số lượng"
+                                            class="mat-input-element mat-form-field-autofill-control" type="number"
+                                            style="text-align: right;">
+                                    </div>
+                                    <div class="col s12 m12 l2">
+                                        <input matInput [(ngModel)]="warehouseCancelDetailService.formData.Price"
+                                            placeholder="Đơn giá"
+                                            class="mat-input-element mat-form-field-autofill-control" type="number"
+                                            style="text-align: right;">
+                                    </div>
+                                    <div class="col s12 m12 l2">
+                                        <a title="Thêm chi tiết" type="submit" style="padding-top: 3px;"
+                                            class="mb-6 btn-floating waves-effect waves-light cyan"
+                                            (click)="onAddDetail()"><i class="material-icons">add</i></a>
+                                    </div>
+                                </div>
+                                <div class="KhungOverflow">
+                                    <mat-table [dataSource]="dataSource" matSort>
+                                        <ng-container matColumnDef="ProductDisplay">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Thành phẩm
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let element">
+                                                <img width="20%" [src]="element.ProductImageURL">
+                                                <b>{{element.ProductDisplay}}</b>
+                                            </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="UnitDisplay">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Đơn vị tính
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let element">
+                                                <div>
+                                                    {{element.UnitDisplay}}
+                                                </div>
+                                            </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Quantity">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Số lượng
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let element">
+                                                <input matInput [(ngModel)]="element.Quantity" placeholder="Số lượng"
+                                                    type="number" style="text-align: right;">&nbsp;&nbsp;&nbsp;
+                                            </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Price">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Đơn giá
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let element">
+                                                <input matInput [(ngModel)]="element.Price" placeholder="Đơn giá"
+                                                    type="number" style="text-align: right;">
+                                            </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="Total">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header>Tổng cộng
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let element">
+                                                <b style="text-align: right; width: 100px;">
+                                                    {{element.Total | number: '1.0-0'}}
+                                                </b>
+                                            </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="actions">
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                            </mat-header-cell>
+                                            <mat-cell *matCellDef="let element">
+                                                <a title="Lưu chi tiết" type="submit" style="padding-top: 3px;"
+                                                    class="mb-6 btn-floating waves-effect waves-light cyan"
+                                                    (click)="onUpdateDetail(element)"><i
+                                                        class="material-icons">create</i></a>&nbsp;&nbsp;&nbsp;
+                                                <a style="padding-top: 3px;" title="Xóa"
+                                                    class="mb-6 btn-floating waves-effect waves-light red"
+                                                    (click)="onDeleteDetail(element)"><i
+                                                        class="material-icons">delete_outline</i></a>
+                                            </mat-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="loading">
+                                            <mat-footer-cell *matFooterCellDef colspan="4">
+                                                Đang tải dữ liệu...
+                                            </mat-footer-cell>
+                                        </ng-container>
+                                        <ng-container matColumnDef="noData">
+                                            <mat-footer-cell *matFooterCellDef colspan="4">
+                                                Chưa có dữ liệu.
+                                            </mat-footer-cell>
+                                        </ng-container>
+                                        <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+                                        <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
+                                        <mat-footer-row *matFooterRowDef="['loading']"
+                                            [ngClass]="{'hide':dataSource!=null}">
+                                        </mat-footer-row>
+                                        <mat-footer-row *matFooterRowDef="['noData']"
+                                            [ngClass]="{'hide':!(dataSource!=null && dataSource.data.length==0)}">
+                                        </mat-footer-row>
+                                    </mat-table>
+                                    <!-- <mat-paginator [pageSizeOptions]="[10,20,50,100]" [pageSize]="10" [showFirstLastButtons]>
+                                    </mat-paginator> -->
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading *ngIf="isShowLoading"></app-loading>

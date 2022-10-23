@@ -1,0 +1,130 @@
+<div class="row">
+    <div id="breadcrumbs-wrapper"
+        data-image="https://cms2.theodorealexander.com/app-assets/images/gallery/breadcrumb-bg.jpg"
+        style="color: #ffffff; background: rgb(40,70,99); background: linear-gradient(90deg, rgba(40,70,99,1) 0%, rgba(62,110,159,1) 35%, rgba(106,179,245,1) 100%);">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <h5 class="breadcrumbs-title mt-0 mb-0" style="color: #ffffff;">Upload</h5>
+                </div>
+                <div class="col s12 m6 l6 right-align-md" style="color: #ffffff;">
+                    <ol class="breadcrumbs mb-0">
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">CRM</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">Upload</a>
+                        </li>
+                        <li class="breadcrumb-item active" style="color: #ffffff;">Upload
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    
+                    <div class="col s12 m12 l6">
+                        <div class="card card card-default scrollspy">
+                            <div class="card-content">
+                                <div class="col s6 m6 l9">
+                                    <h3 class="card-title"><b>Đại lý:</b></h3>
+                                </div>
+                                <div class="col s6 m6 l3">
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        Bước 01: Download file Excel mẫu:
+                                        <a target="_blank" href="{{excelTemplateURLCustomer}}">Download</a>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        Bước 02: Chọn file Excel có dữ liệu:
+                                        <input type="file" #uploadItemCustomer>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <button class="btn btn-primary" (click)="onSubmitCustomer()">Upload</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l6">
+                        <div class="card card card-default scrollspy">
+                            <div class="card-content">
+                                <div class="col s6 m6 l9">
+                                    <h3 class="card-title"><b>Thành viên:</b></h3>
+                                </div>
+                                <div class="col s6 m6 l3">
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        Bước 01: Download file Excel mẫu:
+                                        <a target="_blank" href="{{excelTemplateURLMembership}}">Download</a>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        Bước 02: Chọn file Excel có dữ liệu:
+                                        <input type="file" #uploadItemMembership>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <button class="btn btn-primary" (click)="onSubmitMembership()">Upload</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l6">
+                        <div class="card card card-default scrollspy">
+                            <div class="card-content">
+                                <div class="col s6 m6 l9">
+                                    <h3 class="card-title"><b>Thành phẩm:</b></h3>
+                                </div>
+                                <div class="col s6 m6 l3">
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        Bước 01: Download file Excel mẫu:
+                                        <a target="_blank" href="{{excelTemplateURLProduct}}">Download</a>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        Bước 02: Chọn file Excel có dữ liệu:
+                                        <input type="file" #uploadItemProduct>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <button class="btn btn-primary" (click)="onSubmitProduct()">Upload</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l6">
+                        <div class="card card card-default scrollspy">
+                            <div class="card-content">
+                                <div class="col s6 m6 l9">
+                                    <h3 class="card-title"><b>Tỉnh + Huyện + Xã:</b></h3>
+                                </div>
+                                <div class="col s6 m6 l3">
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        Bước 01: Download file Excel mẫu:
+                                        <a target="_blank" href="{{excelTemplateURLProvince}}">Download</a>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        Bước 02: Chọn file Excel có dữ liệu:
+                                        <input type="file" #uploadItemProvince>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <button class="btn btn-primary" (click)="onSubmitProvince()">Upload</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-loading *ngIf="isShowLoading"></app-loading>
