@@ -37,3 +37,16 @@ C:\LeThanhSon\thontrang.com\thontrang.com\Data\obj\Release\netcoreapp3.1\Data.cs
 C:\LeThanhSon\thontrang.com\thontrang.com\Data\obj\Release\netcoreapp3.1\Data.csproj.CopyComplete
 C:\LeThanhSon\thontrang.com\thontrang.com\Data\obj\Release\netcoreapp3.1\Data.dll
 C:\LeThanhSon\thontrang.com\thontrang.com\Data\obj\Release\netcoreapp3.1\Data.pdb
+C:\LeThanhSon\thontrang2022\Data\bin\Release\netcoreapp3.1\Data.deps.json
+C:\LeThanhSon\thontrang2022\Data\bin\Release\netcoreapp3.1\Data.dll
+C:\LeThanhSon\thontrang2022\Data\bin\Release\netcoreapp3.1\Data.pdb
+C:\LeThanhSon\thontrang2022\Data\bin\Release\netcoreapp3.1\Helpers.dll
+C:\LeThanhSon\thontrang2022\Data\bin\Release\netcoreapp3.1\Helpers.pdb
+C:\LeThanhSon\thontrang2022\Data\obj\Release\netcoreapp3.1\Data.csproj.AssemblyReference.cache
+C:\LeThanhSon\thontrang2022\Data\obj\Release\netcoreapp3.1\Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\LeThanhSon\thontrang2022\Data\obj\Release\netcoreapp3.1\Data.AssemblyInfoInputs.cache
+C:\LeThanhSon\thontrang2022\Data\obj\Release\netcoreapp3.1\Data.AssemblyInfo.cs
+C:\LeThanhSon\thontrang2022\Data\obj\Release\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache
+C:\LeThanhSon\thontrang2022\Data\obj\Release\netcoreapp3.1\Data.csproj.CopyComplete
+C:\LeThanhSon\thontrang2022\Data\obj\Release\netcoreapp3.1\Data.dll
+C:\LeThanhSon\thontrang2022\Data\obj\Release\netcoreapp3.1\Data.pdb

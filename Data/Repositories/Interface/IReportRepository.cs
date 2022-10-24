@@ -12,6 +12,7 @@ namespace ThonTrang.Data.Repositories
         public List<WarehouseExportDetail> ChiTietBanHangByCustomerIDAndDateBeginAndDateEnd002ToList(int customerID, DateTime dateBegin, DateTime dateEnd);
         public List<ProductDataTransfer> TheKhoByDateBeginAndDateEndToList(DateTime dateBegin, DateTime dateEnd);
         public List<ProductDataTransfer> TheKhoByProductIDAndDateBeginAndDateEndToList(int productID, DateTime dateBegin, DateTime dateEnd);
+        public List<WarehouseDetailDataTransfer> TheKhoByProductIDToList(int productID);
     }
 }
 

@@ -26,19 +26,15 @@
             <div class="section section-data-tables">
                 <div class="card">
                     <div class="card-content">
-                        <div class="col s12 m12 l3">
-                            <input [(ngModel)]="dateBegin" matInput type="date">
+                        <div class="col s6 m6 l9">
+                            <input matInput [(ngModel)]="searchString" placeholder="Tìm ..."
+                                class="mat-input-element mat-form-field-autofill-control" autocomplete="off"
+                                (keyup.enter)="onSearch()">
                         </div>
-                        <div class="col s12 m12 l3">
-                            <input [(ngModel)]="dateEnd" matInput type="date">
-                        </div>
-                        <div class="col s12 m12 l3">
-                            <input matInput [(ngModel)]="searchString" placeholder="Tìm ..." (keyup)="onSearch()">
-                        </div>
-                        <div class="col s12 m12 l3">
+                        <div class="col s6 m6 l3">
                             <a title="Tìm" (click)="onSearch()"
                                 class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
-                                    class="material-icons">search</i></a>&nbsp;&nbsp;&nbsp;
+                                    class="material-icons">search</i></a>&nbsp;&nbsp;&nbsp;                           
                         </div>
                         <div class="KhungOverflow">
                             <mat-table [dataSource]="dataSource" matSort>
@@ -50,7 +46,7 @@
                                         <b>{{element.Name}}</b>
                                         &nbsp;({{element.QuantityInStock}})
                                     </mat-cell>
-                                </ng-container>
+                                </ng-container>                                                      
                                 <ng-container matColumnDef="CompanyName">
                                     <mat-header-cell *matHeaderCellDef mat-sort-header>Công ty
                                     </mat-header-cell>
@@ -68,7 +64,7 @@
                                             {{element.ParentName}}
                                         </div>
                                     </mat-cell>
-                                </ng-container>
+                                </ng-container>                                
                                 <ng-container matColumnDef="QuantityImport">
                                     <mat-header-cell *matHeaderCellDef mat-sort-header>Nhập (Thùng)
                                     </mat-header-cell>
@@ -131,6 +127,9 @@
                                             <a title="Chi tiết" target="_blank" href="{{URLSub}}/{{element.ID}}"
                                                 class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
                                                     class="material-icons">info</i></a>
+                                            <a title="In" (click)="onPrint(element.ID)"
+                                                    class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
+                                                        class="material-icons">print</i></a>&nbsp;&nbsp;&nbsp;
                                         </div>
                                     </mat-cell>
                                 </ng-container>

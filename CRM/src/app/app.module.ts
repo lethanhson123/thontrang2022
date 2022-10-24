@@ -74,6 +74,7 @@ import { CustomerDebtComponent } from './customer-debt/customer-debt.component';
 import { CustomerDebtInfoComponent } from './Customer-Debt/customer-debt-info/customer-debt-info.component';
 import { WarehouseByDateComponent } from './warehouse-by-date/warehouse-by-date.component';
 import { ProductByDateComponent } from './product-by-date/product-by-date.component';
+import { ProductStatisticalInfoComponent } from './Statistical/product-statistical-info/product-statistical-info.component';
 
 @NgModule({
   declarations: [
@@ -139,7 +140,8 @@ import { ProductByDateComponent } from './product-by-date/product-by-date.compon
     CustomerDebtComponent,
     CustomerDebtInfoComponent,
     WarehouseByDateComponent,
-    ProductByDateComponent
+    ProductByDateComponent,
+    ProductStatisticalInfoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

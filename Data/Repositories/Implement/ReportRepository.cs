@@ -94,6 +94,17 @@ namespace ThonTrang.Data.Repositories
             result = SQLHelper.ToList<ProductDataTransfer>(dt);
             return result;
         }
+        public List<WarehouseDetailDataTransfer> TheKhoByProductIDToList(int productID)
+        {
+            List<WarehouseDetailDataTransfer> result = new List<WarehouseDetailDataTransfer>();            
+            SqlParameter[] parameters =
+            {
+                    new SqlParameter("@ProductID",productID),                    
+                };
+            DataTable dt = SQLHelper.Fill(AppGlobal.SQLServerConectionString, "sp_Report_TheKhoByProductID", parameters);
+            result = SQLHelper.ToList<WarehouseDetailDataTransfer>(dt);
+            return result;
+        }
     }
 }
 

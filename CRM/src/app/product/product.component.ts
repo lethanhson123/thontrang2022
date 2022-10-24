@@ -33,7 +33,7 @@ export class ProductComponent implements OnInit {
   }
   getToList() {    
     this.isShowLoading = true;
-    this.productService.getBySearchStringToList(this.searchString).then(res => {
+    this.productService.getAllToList().then(res => {
       this.productService.list = res as Product[];    
       this.dataSource = new MatTableDataSource(this.productService.list);
       this.dataSource.sort = this.sort;
@@ -41,8 +41,13 @@ export class ProductComponent implements OnInit {
       this.isShowLoading = false;     
     });
   }
-  onSearch() {    
-    this.getToList();
+  onSearch() {   
+    if (this.searchString.length > 0) {
+      this.dataSource.filter = this.searchString.toLowerCase();
+    }
+    else {
+      this.getToList();
+    }     
   }
 
 }

@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Product } from 'src/app/shared/Product.model';
 import { ProductService } from 'src/app/shared/Product.service';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { ReportService } from 'src/app/shared/Report.service';
 
 @Component({
   selector: 'app-product-statistical',
@@ -16,38 +17,47 @@ import { NotificationService } from 'src/app/shared/notification.service';
 export class ProductStatisticalComponent implements OnInit {
 
   dataSource: MatTableDataSource<any>;
-  displayColumns: string[] = ['Name', 'CompanyName', 'ParentName', 'QuantityImport', 'QuantityImport02', 'QuantityExport', 'QuantityExport02', 'QuantityInStock', 'QuantityInStock02', 'actions'];
+  displayColumns: string[] = ['Name','CompanyName','ParentName','QuantityImport','QuantityImport02','QuantityExport','QuantityExport02','QuantityInStock','QuantityInStock02','actions'];  
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   isShowLoading: boolean = false;
-  dateBegin: Date = new Date();
-  dateEnd: Date = new Date();
-  searchString: string = environment.InitializationString;
-  URLSub: string = environment.DomainDestination + "ProductInfo";
+  searchString: string = environment.InitializationString; 
+  URLSub: string = environment.DomainDestination + "ProductStatisticalInfo";
   constructor(
     public productService: ProductService,
     public notificationService: NotificationService,
+    public reportService: ReportService,
   ) { }
 
   ngOnInit(): void {
+    this.getToList();
   }
-  getToList() {
+  getToList() {    
     this.isShowLoading = true;
-    this.productService.getByDateBeginAndDateEndAndSearchStringToList(this.dateBegin, this.dateEnd, '').then(res => {
-      this.productService.list = res as Product[];
+    this.productService.getAllToList().then(res => {
+      this.productService.list = res as Product[];    
       this.dataSource = new MatTableDataSource(this.productService.list);
       this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      this.isShowLoading = false;
+      this.dataSource.paginator = this.paginator;     
+      this.isShowLoading = false;     
     });
   }
-  onSearch() {
+  onSearch() {    
     if (this.searchString.length > 0) {
       this.dataSource.filter = this.searchString.toLowerCase();
     }
     else {
       this.getToList();
-    }
+    }     
+  }
+  onPrint(productID: number) {
+    this.isShowLoading = true;
+    this.reportService.tonKhoThanhPhamByProductIDToHTML(productID).then(
+      res => {
+        window.open(res.toString(), "_blank");
+        this.isShowLoading = false;
+      }
+    );
   }
 }

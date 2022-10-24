@@ -26,6 +26,7 @@ import { ProductCategoryComponent } from './product/product-category/product-cat
 import { ProductInfoComponent } from './product/product-info/product-info.component';
 import { ProductComponent } from './product/product.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ProductStatisticalInfoComponent } from './Statistical/product-statistical-info/product-statistical-info.component';
 import { ProductStatisticalComponent } from './statistical/product-statistical/product-statistical.component';
 import { SystemApplicationComponent } from './system-application/system-application.component';
 import { SystemMenuComponent } from './system-menu/system-menu.component';
@@ -57,6 +58,9 @@ const routes: Routes = [
   },
   {
     path: 'ProductStatistical', component: ProductStatisticalComponent,
+  },
+  {
+    path: 'ProductStatisticalInfo/:ID', component: ProductStatisticalInfoComponent,
   },
   {
     path: 'ShoppingCart', component: ShoppingCartComponent,
