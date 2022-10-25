@@ -59,6 +59,12 @@ namespace ThonTrang.API.Controllers
             var result = _reportRepository.TheKhoByProductIDToList(productID);
             return result;
         }
+        [HttpGet]
+        public List<Product> TonKhoGocThuocToList()
+        {
+            var result = _reportRepository.TonKhoGocThuocToList();
+            return result;
+        }
 
         [HttpGet]
         public JsonResult ChiTietBanHangByCustomerIDAndDateBeginAndDateEndToHTML(int customerID, string dateBegin, string dateEnd)
@@ -556,6 +562,98 @@ namespace ThonTrang.API.Controllers
             result = AppGlobal.APISite + subPath + "/" + fileName;
             return Json(result);
         }
+        [HttpGet]
+        public JsonResult TonKhoGocThuocByProductIngredientIDToHTML(int productIngredientID)
+        {
+            string result = AppGlobal.InitializationString;
+
+            string fileName = @"TonKhoGocThuoc_ThonTrang_" + AppGlobal.InitializationDateTimeCode + ".html";
+            string subPath = AppGlobal.Download + "/" + AppGlobal.HTML;
+
+            string contentHTML = AppGlobal.InitializationString;
+            var physicalPathRead = Path.Combine(_webHostEnvironment.WebRootPath, subPath, "TonKhoGocThuoc_ThonTrang.html");
+            using (FileStream fs = new FileStream(physicalPathRead, FileMode.Open))
+            {
+                using (StreamReader r = new StreamReader(fs, Encoding.UTF8))
+                {
+                    contentHTML = r.ReadToEnd();
+                }
+            }
+            contentHTML = contentHTML.Replace("[DatePrint]", AppGlobal.InitializationDateTime.ToString("dd/MM/yyyy HH:mm:ss"));
+
+            Product product = _reportRepository.TonKhoGocThuocByProductIngredientID(productIngredientID);
+            if (product != null)
+            {
+
+                contentHTML = contentHTML.Replace("[ProductDisplay]", product.NameOriginal);
+                contentHTML = contentHTML.Replace("[QuantityImport]", product.QuantityImport.Value.ToString("N0"));
+                contentHTML = contentHTML.Replace("[QuantityImport02]", product.QuantityImport02.Value.ToString("N0"));
+                contentHTML = contentHTML.Replace("[QuantityExport]", product.QuantityExport.Value.ToString("N0"));
+                contentHTML = contentHTML.Replace("[QuantityExport02]", product.QuantityExport02.Value.ToString("N0"));
+                contentHTML = contentHTML.Replace("[QuantityInStock]", product.QuantityInStock.Value.ToString("N0"));
+                contentHTML = contentHTML.Replace("[QuantityInStock02]", product.QuantityInStock02.Value.ToString("N0"));
+
+
+                List<WarehouseDetailDataTransfer> list = _reportRepository.TheKhoByProductIngredientIDToList(productIngredientID);
+
+                StringBuilder content = new StringBuilder();
+                int STT = 0;
+                int tonCuoiKy = 0;
+                foreach (WarehouseDetailDataTransfer item in list)
+                {
+                    STT = STT + 1;
+                    content.AppendLine(@"<tr>");
+                    content.AppendLine(@"<td style='text-align:center;'>" + STT + "</td>");
+                    content.AppendLine(@"<td style='text-align:right;'>" + item.DateFounded.Value.ToString("dd/MM/yyyy") + "</td>");
+                    content.AppendLine(@"<td style='text-align:left;'>" + item.Code + "</td>");
+                    content.AppendLine(@"<td style='text-align:left;'>" + item.ProductDisplay + "</td>");
+                    content.AppendLine(@"<td style='text-align:left;'>" + item.CompanyDisplay + "</td>");
+                    content.AppendLine(@"<td style='text-align:left;'>" + item.CustomerDisplay + "</td>");
+                    if (item.SortOrder == 0)
+                    {
+                        content.AppendLine(@"<td style='text-align:right;'><b>" + item.Quantity.Value.ToString("N0") + "</b></td>");
+                        item.QuantityImport = item.Quantity / item.SpecificationsNumber;
+                        item.QuantityImport02 = item.Quantity % item.SpecificationsNumber;
+                        tonCuoiKy = tonCuoiKy + item.Quantity.Value;
+                    }
+                    else
+                    {
+                        content.AppendLine(@"<td style='text-align:right;'></td>");
+                    }
+                    content.AppendLine(@"<td style='text-align:right;'>" + item.QuantityImport.Value.ToString("N0") + "</td>");
+                    content.AppendLine(@"<td style='text-align:right;'>" + item.QuantityImport02.Value.ToString("N0") + "</td>");
+                    if (item.SortOrder == 1)
+                    {
+                        content.AppendLine(@"<td style='text-align:right;'><b>" + item.Quantity.Value.ToString("N0") + "</b></td>");
+                        item.QuantityExport = item.Quantity / item.SpecificationsNumber;
+                        item.QuantityExport02 = item.Quantity % item.SpecificationsNumber;
+                        tonCuoiKy = tonCuoiKy - item.Quantity.Value;
+                    }
+                    else
+                    {
+                        content.AppendLine(@"<td style='text-align:right;'></td>");
+                    }
+                    content.AppendLine(@"<td style='text-align:right;'>" + item.QuantityExport.Value.ToString("N0") + "</td>");
+                    content.AppendLine(@"<td style='text-align:right;'>" + item.QuantityExport02.Value.ToString("N0") + "</td>");
+                    content.AppendLine(@"<td style='text-align:right;'><b>" + tonCuoiKy.ToString("N0") + "</b></td>");
+                    content.AppendLine(@"<td style='text-align:right;'>" + tonCuoiKy / item.SpecificationsNumber + "</td>");
+                    content.AppendLine(@"<td style='text-align:right;'>" + tonCuoiKy % item.SpecificationsNumber + "</td>");
+                    content.AppendLine(@"</tr>");
+                }
+                contentHTML = contentHTML.Replace("[Details]", content.ToString());
+            }
+            var physicalPathCreate = Path.Combine(_webHostEnvironment.WebRootPath, subPath, fileName);
+            using (FileStream fs = new FileStream(physicalPathCreate, FileMode.Create))
+            {
+                using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
+                {
+                    w.WriteLine(contentHTML);
+                }
+            }
+            result = AppGlobal.APISite + subPath + "/" + fileName;
+            return Json(result);
+        }
+
     }
 }
 

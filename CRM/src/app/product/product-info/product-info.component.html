@@ -44,6 +44,7 @@
                     <div id="ItemInfo">
                         <input name="ID" [(ngModel)]="productService.formData.ID" type="hidden">
                         <input name="ImageFileName" [(ngModel)]="productService.formData.ImageFileName" type="hidden">
+                        <input name="NameOriginal" [(ngModel)]="productService.formData.NameOriginal" type="hidden">
                         <div class="row">
                             <div class="col s12 m12 l4">
                                 <div class="col s6 m6 l4">
@@ -56,18 +57,7 @@
                                         <input placeholder="Thành phẩm" name="Name"
                                             [(ngModel)]="productService.formData.Name" type="text">
                                     </div>
-                                </div>
-                                <div class="col s6 m6 l4">
-                                    <div class="input-field">
-                                        <label for="NameOriginal">Gốc thuốc</label>
-                                    </div>
-                                </div>
-                                <div class="col s6 m6 l8">
-                                    <div class="input-field">
-                                        <input placeholder="Gốc thuốc" name="NameOriginal"
-                                            [(ngModel)]="productService.formData.NameOriginal" type="text">
-                                    </div>
-                                </div>
+                                </div>                                
                                 <div class="col s6 m6 l4">
                                     <div class="input-field">
                                         <label for="Specifications">Quy cách</label>
@@ -112,6 +102,17 @@
                                             [(ngModel)]="productService.formData.Weight" type="number">
                                     </div>
                                 </div>
+                                <div class="col s12 m12 l12">
+                                    <div class="input-field">
+                                        <p>
+                                            <label>
+                                                <input type="checkbox" class="filled-in" name="Active"
+                                                    [(ngModel)]="productService.formData.Active" />
+                                                <span>Kích hoạt</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col s12 m12 l4">
                                 <div class="col s6 m6 l4">
@@ -125,6 +126,23 @@
                                         name="CompanyID" class="browser-default"
                                         [(ngModel)]="productService.formData.CompanyID">
                                         <mat-option *ngFor="let item of companyService.list" [value]="item.ID">
+                                            {{item.Display}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <br />
+                                    <br />
+                                </div>
+                                <div class="col s6 m6 l4">
+                                    <div class="input-field">
+                                        <label for="ProductIngredientID">Gốc thuốc</label>
+                                    </div>
+                                </div>
+                                <div class="col s6 m6 l8">
+                                    <mat-select
+                                        style="padding-top:20px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                                        name="ProductIngredientID" class="browser-default"
+                                        [(ngModel)]="productService.formData.ProductIngredientID">
+                                        <mat-option *ngFor="let item of productIngredientService.list" [value]="item.ID">
                                             {{item.Display}}
                                         </mat-option>
                                     </mat-select>
@@ -165,17 +183,7 @@
                                     <br />
                                     <br />
                                 </div>
-                                <div class="col s12 m12 l12">
-                                    <div class="input-field">
-                                        <p>
-                                            <label>
-                                                <input type="checkbox" class="filled-in" name="Active"
-                                                    [(ngModel)]="productService.formData.Active" />
-                                                <span>Kích hoạt</span>
-                                            </label>
-                                        </p>
-                                    </div>
-                                </div>
+                                
                                 <div class="col s12 m12 l12">
                                     <input multiple type="file" accept="image/*"
                                         (change)="changeImage($event.target.files)">

@@ -13,6 +13,9 @@ namespace ThonTrang.Data.Repositories
         public List<ProductDataTransfer> TheKhoByDateBeginAndDateEndToList(DateTime dateBegin, DateTime dateEnd);
         public List<ProductDataTransfer> TheKhoByProductIDAndDateBeginAndDateEndToList(int productID, DateTime dateBegin, DateTime dateEnd);
         public List<WarehouseDetailDataTransfer> TheKhoByProductIDToList(int productID);
+        public List<WarehouseDetailDataTransfer> TheKhoByProductIngredientIDToList(int productIngredientID);
+        public List<Product> TonKhoGocThuocToList();
+        public Product TonKhoGocThuocByProductIngredientID(int productIngredientID);
     }
 }
 

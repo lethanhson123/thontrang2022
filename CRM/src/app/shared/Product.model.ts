@@ -35,5 +35,6 @@ export class Product {
     QuantityImport02?: number;      
     QuantityInStock?: number;      
     QuantityInStock02?: number;      
+    ProductIngredientID?: number;      
 }
 

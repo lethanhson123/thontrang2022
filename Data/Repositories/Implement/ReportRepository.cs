@@ -71,7 +71,7 @@ namespace ThonTrang.Data.Repositories
             dateBegin = new DateTime(dateBegin.Year, dateBegin.Month, dateBegin.Day, 0, 0, 0);
             dateEnd = new DateTime(dateEnd.Year, dateEnd.Month, dateEnd.Day, 23, 59, 59);
             SqlParameter[] parameters =
-            {                    
+            {
                     new SqlParameter("@DateBegin",dateBegin),
                     new SqlParameter("@DateEnd",dateEnd),
                 };
@@ -96,13 +96,46 @@ namespace ThonTrang.Data.Repositories
         }
         public List<WarehouseDetailDataTransfer> TheKhoByProductIDToList(int productID)
         {
-            List<WarehouseDetailDataTransfer> result = new List<WarehouseDetailDataTransfer>();            
+            List<WarehouseDetailDataTransfer> result = new List<WarehouseDetailDataTransfer>();
             SqlParameter[] parameters =
             {
-                    new SqlParameter("@ProductID",productID),                    
+                    new SqlParameter("@ProductID",productID),
                 };
             DataTable dt = SQLHelper.Fill(AppGlobal.SQLServerConectionString, "sp_Report_TheKhoByProductID", parameters);
             result = SQLHelper.ToList<WarehouseDetailDataTransfer>(dt);
+            return result;
+        }
+        public List<WarehouseDetailDataTransfer> TheKhoByProductIngredientIDToList(int productIngredientID)
+        {
+            List<WarehouseDetailDataTransfer> result = new List<WarehouseDetailDataTransfer>();
+            SqlParameter[] parameters =
+            {
+                    new SqlParameter("@ProductIngredientID",productIngredientID),
+                };
+            DataTable dt = SQLHelper.Fill(AppGlobal.SQLServerConectionString, "sp_Report_TheKhoByProductIngredientID", parameters);
+            result = SQLHelper.ToList<WarehouseDetailDataTransfer>(dt);
+            return result;
+        }
+        public List<Product> TonKhoGocThuocToList()
+        {
+            List<Product> result = new List<Product>();
+            DataTable dt = SQLHelper.Fill(AppGlobal.SQLServerConectionString, "sp_Report_TonKhoGocThuoc");
+            result = SQLHelper.ToList<Product>(dt);
+            return result;
+        }
+        public Product TonKhoGocThuocByProductIngredientID(int productIngredientID)
+        {
+            Product result = new Product();
+            SqlParameter[] parameters =
+            {
+                    new SqlParameter("@ProductIngredientID",productIngredientID),
+                };
+            DataTable dt = SQLHelper.Fill(AppGlobal.SQLServerConectionString, "sp_Report_TonKhoGocThuocByProductIngredientID", parameters);
+            List<Product> list = SQLHelper.ToList<Product>(dt);
+            if (list.Count > 0)
+            {
+                result = list[0];
+            }
             return result;
         }
     }

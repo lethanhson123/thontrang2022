@@ -4,18 +4,24 @@ import { environment } from 'src/environments/environment';
 import { YearMonth } from 'src/app/shared/YearMonth.model';
 import { ProductDataTransfer } from './ProductDataTransfer.model';
 import { WarehouseDetailDataTransfer } from './WarehouseDetailDataTransfer.model';
+import { Product } from './Product.model';
 @Injectable({
     providedIn: 'root'
 })
 export class ReportService {   
     listProductDataTransfer: ProductDataTransfer[] | undefined;
     listWarehouseDetailDataTransfer: WarehouseDetailDataTransfer[] | undefined;
+    listProduct: Product[] | undefined;
     aPIURL: string = environment.APIURL;
     controller: string = "Report";
     constructor(private httpClient: HttpClient) {
         this.initializationFormData();
     }
     initializationFormData() {        
+    }
+    tonKhoGocThuocToList() {
+        let url = this.aPIURL + this.controller + '/TonKhoGocThuocToList';        
+        return this.httpClient.get(url).toPromise();
     }
     theKhoByDateBeginAndDateEndToList(dateBegin: any, dateEnd: any) {
         let url = this.aPIURL + this.controller + '/TheKhoByDateBeginAndDateEndToList';
@@ -42,6 +48,12 @@ export class ReportService {
         let url = this.aPIURL + this.controller + '/TonKhoThanhPhamByProductIDToHTML';
         const params = new HttpParams()    
             .set('productID', JSON.stringify(productID))                    
+        return this.httpClient.get(url, { params }).toPromise();
+    }
+    tonKhoGocThuocByProductIngredientIDToHTML(productIngredientID: number) {
+        let url = this.aPIURL + this.controller + '/TonKhoGocThuocByProductIngredientIDToHTML';
+        const params = new HttpParams()    
+            .set('productIngredientID', JSON.stringify(productIngredientID))                    
         return this.httpClient.get(url, { params }).toPromise();
     }
     chiTietBanHangByCustomerIDAndDateBeginAndDateEndToHTML(customerID: number, dateBegin: any, dateEnd: any) {

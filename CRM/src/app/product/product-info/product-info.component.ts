@@ -12,6 +12,10 @@ import { Company } from 'src/app/shared/Company.model';
 import { CompanyService } from 'src/app/shared/Company.service';
 import { ProductCategory } from 'src/app/shared/ProductCategory.model';
 import { ProductCategoryService } from 'src/app/shared/ProductCategory.service';
+import { ProductIngredient } from 'src/app/shared/ProductIngredient.model';
+import { ProductIngredientService } from 'src/app/shared/ProductIngredient.service';
+
+
 @Component({
   selector: 'app-product-info',
   templateUrl: './product-info.component.html',
@@ -32,6 +36,7 @@ export class ProductInfoComponent implements OnInit {
     public unitService: UnitService,
     public companyService: CompanyService,
     public productCategoryService: ProductCategoryService,
+    public productIngredientService: ProductIngredientService,
   ) {
 
     this.router.events.forEach((event) => {
@@ -40,6 +45,7 @@ export class ProductInfoComponent implements OnInit {
         this.getUnitToList();
         this.getCompanyToList();
         this.getProductCategoryToList();
+        this.getProductIngredientToList();
         this.getByQueryString();
       }
     });
@@ -62,10 +68,16 @@ export class ProductInfoComponent implements OnInit {
       this.productCategoryService.list = res as ProductCategory[];
     });
   }
+  getProductIngredientToList() {
+    this.productIngredientService.getAllToList().then(res => {
+      this.productIngredientService.list = res as ProductIngredient[];
+    });
+  }
   getByQueryString() {
     this.isShowLoading = true;
     this.productService.getByIDString(this.queryString).then(res => {
       this.productService.formData = res as Product;
+      console.log(this.productService.formData);
       this.isShowLoading = false;
     });
   }

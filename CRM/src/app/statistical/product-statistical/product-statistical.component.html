@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m6 l6">
-                    <h5 class="breadcrumbs-title mt-0 mb-0" style="color: #ffffff;">Tồn kho <span
+                    <h5 class="breadcrumbs-title mt-0 mb-0" style="color: #ffffff;">Tồn kho thành phẩm <span
                             *ngIf="productService.list">({{productService.list.length}} items)</span></h5>
                 </div>
                 <div class="col s12 m6 l6 right-align-md">
@@ -14,7 +14,7 @@
                         </li>
                         <li class="breadcrumb-item"><a href="#" style="color: #ffffff;">Thống kê</a>
                         </li>
-                        <li class="breadcrumb-item active" style="color: #ffffff;">Tồn kho
+                        <li class="breadcrumb-item active" style="color: #ffffff;">Tồn kho thành phẩm
                         </li>
                     </ol>
                 </div>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="KhungOverflow">
                             <mat-table [dataSource]="dataSource" matSort>
-                                <ng-container matColumnDef="Name">
+                                <ng-container matColumnDef="Name" style="max-width: 40%;">
                                     <mat-header-cell *matHeaderCellDef mat-sort-header>Thành phẩm
                                     </mat-header-cell>
                                     <mat-cell *matCellDef="let element">
@@ -126,10 +126,10 @@
                                         <div style="padding-top: 5px; width: 100%; text-align: center;">
                                             <a title="Chi tiết" target="_blank" href="{{URLSub}}/{{element.ID}}"
                                                 class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
-                                                    class="material-icons">info</i></a>
+                                                    class="material-icons">info</i></a>&nbsp;&nbsp;&nbsp;
                                             <a title="In" (click)="onPrint(element.ID)"
                                                     class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
-                                                        class="material-icons">print</i></a>&nbsp;&nbsp;&nbsp;
+                                                        class="material-icons">print</i></a>
                                         </div>
                                     </mat-cell>
                                 </ng-container>

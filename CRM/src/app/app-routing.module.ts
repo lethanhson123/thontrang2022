@@ -22,10 +22,12 @@ import { OrderToWarehouseExportComponent } from './order-to-warehouse-export/ord
 import { OrderInfoComponent } from './order/order-info/order-info.component';
 import { OrderComponent } from './order/order.component';
 import { ProductByDateComponent } from './product-by-date/product-by-date.component';
+import { ProductIngredientComponent } from './product-ingredient/product-ingredient.component';
 import { ProductCategoryComponent } from './product/product-category/product-category.component';
 import { ProductInfoComponent } from './product/product-info/product-info.component';
 import { ProductComponent } from './product/product.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ProductIngredientStatisticalComponent } from './statistical/product-ingredient-statistical/product-ingredient-statistical.component';
 import { ProductStatisticalInfoComponent } from './Statistical/product-statistical-info/product-statistical-info.component';
 import { ProductStatisticalComponent } from './statistical/product-statistical/product-statistical.component';
 import { SystemApplicationComponent } from './system-application/system-application.component';
@@ -61,6 +63,9 @@ const routes: Routes = [
   },
   {
     path: 'ProductStatisticalInfo/:ID', component: ProductStatisticalInfoComponent,
+  },
+  {
+    path: 'ProductIngredientStatistical', component: ProductIngredientStatisticalComponent,
   },
   {
     path: 'ShoppingCart', component: ShoppingCartComponent,
@@ -115,6 +120,9 @@ const routes: Routes = [
   },
   {
     path: 'ProductCategory', component: ProductCategoryComponent,
+  },
+  {
+    path: 'ProductIngredient', component: ProductIngredientComponent,
   },
   {
     path: 'Company', component: CompanyComponent,

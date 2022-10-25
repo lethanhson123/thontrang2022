@@ -75,6 +75,9 @@ import { CustomerDebtInfoComponent } from './Customer-Debt/customer-debt-info/cu
 import { WarehouseByDateComponent } from './warehouse-by-date/warehouse-by-date.component';
 import { ProductByDateComponent } from './product-by-date/product-by-date.component';
 import { ProductStatisticalInfoComponent } from './Statistical/product-statistical-info/product-statistical-info.component';
+import { ProductIngredientComponent } from './product-ingredient/product-ingredient.component';
+import { ProductIngredientDetailComponent } from './Product-Ingredient/product-ingredient-detail/product-ingredient-detail.component';
+import { ProductIngredientStatisticalComponent } from './statistical/product-ingredient-statistical/product-ingredient-statistical.component';
 
 @NgModule({
   declarations: [
@@ -141,7 +144,10 @@ import { ProductStatisticalInfoComponent } from './Statistical/product-statistic
     CustomerDebtInfoComponent,
     WarehouseByDateComponent,
     ProductByDateComponent,
-    ProductStatisticalInfoComponent
+    ProductStatisticalInfoComponent,
+    ProductIngredientComponent,
+    ProductIngredientDetailComponent,
+    ProductIngredientStatisticalComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -3,6 +3,8 @@ namespace ThonTrang.Data.Models
 {
     public partial class WarehouseDetailDataTransfer
     {
+        public string ProductDisplay { get; set; }
+        public int? SpecificationsNumber { get; set; }
         public int? SortOrder { get; set; }
         public DateTime? DateFounded { get; set; }
         public string Code { get; set; }
