@@ -18,6 +18,7 @@ namespace ThonTrang.Data.Models
         public virtual DbSet<ThonTrang.Data.Models.Product> Product { get; set; }
         public virtual DbSet<ThonTrang.Data.Models.ProductCategory> ProductCategory { get; set; }
         public virtual DbSet<ThonTrang.Data.Models.ProductIngredient> ProductIngredient { get; set; }
+        public virtual DbSet<ThonTrang.Data.Models.ProductMedicine> ProductMedicine { get; set; }
         public virtual DbSet<ThonTrang.Data.Models.Unit> Unit { get; set; }
         public virtual DbSet<ThonTrang.Data.Models.Company> Company { get; set; }
         public virtual DbSet<ThonTrang.Data.Models.Customer> Customer { get; set; }

@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 import { Router, NavigationEnd } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { environment } from 'src/environments/environment';
 import { NotificationService } from 'src/app/shared/notification.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Product } from 'src/app/shared/Product.model';
 import { ProductService } from 'src/app/shared/Product.service';
 import { Unit } from 'src/app/shared/Unit.model';
@@ -14,7 +17,8 @@ import { ProductCategory } from 'src/app/shared/ProductCategory.model';
 import { ProductCategoryService } from 'src/app/shared/ProductCategory.service';
 import { ProductIngredient } from 'src/app/shared/ProductIngredient.model';
 import { ProductIngredientService } from 'src/app/shared/ProductIngredient.service';
-
+import { ProductMedicine } from 'src/app/shared/ProductMedicine.model';
+import { ProductMedicineService } from 'src/app/shared/ProductMedicine.service';
 
 @Component({
   selector: 'app-product-info',
@@ -22,6 +26,11 @@ import { ProductIngredientService } from 'src/app/shared/ProductIngredient.servi
   styleUrls: ['./product-info.component.css']
 })
 export class ProductInfoComponent implements OnInit {
+
+  dataSource: MatTableDataSource<any>;
+  displayColumns: string[] = ['ProductIngredientDisplay', 'UnitDisplay', 'Specifications', 'actions'];
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   isShowLoading: boolean = false;
   queryString: string = environment.InitializationString;
@@ -37,6 +46,7 @@ export class ProductInfoComponent implements OnInit {
     public companyService: CompanyService,
     public productCategoryService: ProductCategoryService,
     public productIngredientService: ProductIngredientService,
+    public productMedicineService: ProductMedicineService,
   ) {
 
     this.router.events.forEach((event) => {
@@ -45,7 +55,7 @@ export class ProductInfoComponent implements OnInit {
         this.getUnitToList();
         this.getCompanyToList();
         this.getProductCategoryToList();
-        this.getProductIngredientToList();
+        this.getProductIngredientToList('');
         this.getByQueryString();
       }
     });
@@ -68,16 +78,28 @@ export class ProductInfoComponent implements OnInit {
       this.productCategoryService.list = res as ProductCategory[];
     });
   }
-  getProductIngredientToList() {
-    this.productIngredientService.getAllToList().then(res => {
+  getProductIngredientToList(searchString: string) {
+    this.productIngredientService.getBySearchStringToList(searchString).then(res => {
       this.productIngredientService.list = res as ProductIngredient[];
+    });
+  }
+  getproductMedicineByParentIDToList() {
+    this.productMedicineService.getByParentIDToList(this.productService.formData.ID).then(res => {
+      this.productMedicineService.list = res as ProductMedicine[];
+      this.dataSource = new MatTableDataSource(this.productMedicineService.list);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     });
   }
   getByQueryString() {
     this.isShowLoading = true;
     this.productService.getByIDString(this.queryString).then(res => {
       this.productService.formData = res as Product;
-      console.log(this.productService.formData);
+      if (this.productService.formData) {
+        if (this.productService.formData.ID) {
+          this.getproductMedicineByParentIDToList();
+        }
+      }
       this.isShowLoading = false;
     });
   }
@@ -105,6 +127,32 @@ export class ProductInfoComponent implements OnInit {
         this.productService.formData.ImageURL = event.target.result;
       };
       reader.readAsDataURL(this.fileToUpload0);
+    }
+  }
+  onFilterProductIngredient(searchString: string) {
+    this.getProductIngredientToList(searchString);
+  }
+  onAddProductMedicine() {
+    this.isShowLoading = true;
+    this.productMedicineService.formData.ParentID = this.productService.formData.ID;
+    this.productMedicineService.save(this.productMedicineService.formData).subscribe(
+      res => {
+        this.getproductMedicineByParentIDToList();
+        this.notificationService.success(environment.SaveSuccess);
+        this.isShowLoading = false;
+      },
+      err => {
+        this.notificationService.warn(environment.SaveNotSuccess);
+        this.isShowLoading = false;
+      }
+    );
+  }
+  onDeleteProductMedicine(element: ProductMedicine) {
+    if (confirm(environment.DeleteConfirm)) {
+      this.productMedicineService.remove(element.ID).then(res => {
+        this.getproductMedicineByParentIDToList();
+        this.notificationService.success(environment.DeleteSuccess);
+      });
     }
   }
 }

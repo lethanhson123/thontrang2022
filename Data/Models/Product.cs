@@ -27,6 +27,9 @@ namespace ThonTrang.Data.Models
         public int? QuantityInStock { get; set; }
         public int? QuantityInStock02 { get; set; }
         public int? ProductIngredientID { get; set; }
+        public int? UnitIDSpecifications { get; set; }
+        public string UnitDisplaySpecifications { get; set; }
+        public decimal? SpecificationsDecimal { get; set; }
     }
 }
 

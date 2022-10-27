@@ -26,6 +26,12 @@ export class ProductIngredientService {
         let url = this.aPIURL + this.controller + '/Save';
         return this.httpClient.post(url, formData);
     }
+    getBySearchStringToList(searchString: string) {
+        let url = this.aPIURL + this.controller + '/GetBySearchStringToList';
+        const params = new HttpParams()
+            .set('searchString', searchString)
+        return this.httpClient.get(url, { params }).toPromise();
+    }
     getAllToList() {
         let url = this.aPIURL + this.controller + '/GetAllToList';
         return this.httpClient.get(url).toPromise();

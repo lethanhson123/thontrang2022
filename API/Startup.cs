@@ -30,6 +30,7 @@ namespace ThonTrang.API
             services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddDbContext<ThonTrangContext>();
             services.AddTransient<IUnitRepository, UnitRepository>();
+            services.AddTransient<IProductMedicineRepository, ProductMedicineRepository>();
             services.AddTransient<IProductIngredientRepository, ProductIngredientRepository>();
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();

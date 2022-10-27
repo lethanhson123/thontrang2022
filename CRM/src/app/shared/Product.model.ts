@@ -36,5 +36,8 @@ export class Product {
     QuantityInStock?: number;      
     QuantityInStock02?: number;      
     ProductIngredientID?: number;      
+    UnitIDSpecifications?: number;   
+    UnitDisplaySpecifications?: string;          
+    SpecificationsDecimal?: number;      
 }
 

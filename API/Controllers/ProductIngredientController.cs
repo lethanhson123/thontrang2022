@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using ThonTrang.Data.Models;
 using ThonTrang.Data.Repositories;
@@ -33,9 +34,15 @@ namespace ThonTrang.API.Controllers
         [HttpGet]
         public List<ProductIngredient> GetAllToList()
         {
-            var result = _productIngredientRepository.GetAllToList();
+            var result = _productIngredientRepository.GetAllToList().OrderBy(item => item.Display).ToList();
             return result;
-        }        
+        }
+        [HttpGet]
+        public List<ProductIngredient> GetBySearchStringToList(string searchString)
+        {
+            var result = _productIngredientRepository.GetBySearchStringToList(searchString).OrderBy(item => item.Display).ToList();
+            return result;
+        }
         [HttpGet]
         public ProductIngredient GetByID(int ID)
         {

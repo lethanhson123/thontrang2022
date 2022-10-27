@@ -1,4 +1,4 @@
-export class ProductIngredient {
+export class ProductMedicine {
     ID?: number;   
     UserCreated?: number;    
     DateCreated?: Date;    
@@ -11,8 +11,13 @@ export class ProductIngredient {
     Name?: string;    
     Display?: string;    
     Description?: string;    
-    SortOrder?: number;       
+    SortOrder?: number;     
+    ProductDisplay?: string; 
+    ProductImageURL?: string;      
+    ProductIngredientID?: number; 
+    ProductIngredientDisplay?: string;  
     UnitID?: number; 
     UnitDisplay?: string;    
+    Specifications?: number; 
 }
 
