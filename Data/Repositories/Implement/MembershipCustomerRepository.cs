@@ -49,6 +49,7 @@ namespace ThonTrang.Data.Repositories
             List<MembershipCustomer> list = new List<MembershipCustomer>();
             if (!string.IsNullOrEmpty(searchString))
             {
+                searchString = searchString.Trim();
                 SqlParameter[] parameters =
                 {
                     new SqlParameter("@ParentID",parentID),

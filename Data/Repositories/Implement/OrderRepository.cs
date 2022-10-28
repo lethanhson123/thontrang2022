@@ -48,6 +48,7 @@ namespace ThonTrang.Data.Repositories
             List<Order> list = new List<Order>();
             if (!string.IsNullOrEmpty(searchString))
             {
+                searchString = searchString.Trim();
                 SqlParameter[] parameters =
                 {
                     new SqlParameter("@Active",active),

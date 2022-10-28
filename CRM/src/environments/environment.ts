@@ -1,8 +1,8 @@
 export const environment = {
   production: false, 
-  DomainURL: "http://localhost:4200/",  
-  DomainDestination: "http://localhost:4200/#/",  
-  APIURL: "https://localhost:44305/",    
+  DomainURL: "https://crm.thontrang.com/",  
+  DomainDestination: "https://crm.thontrang.com/#/",  
+  APIURL: "https://api-pre.theodorealexander.com/",    
   LoginURL: "https://login.thontrang.com/",
   Website: "https://thontrang.com/",
   Images: "images",  

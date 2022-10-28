@@ -130,6 +130,7 @@ namespace ThonTrang.Data.Repositories
             List<Product> list = new List<Product>();
             if (!string.IsNullOrEmpty(searchString))
             {
+                searchString = searchString.Trim();
                 SqlParameter[] parameters =
                 {
                     new SqlParameter("@SearchString",searchString),
@@ -159,6 +160,7 @@ namespace ThonTrang.Data.Repositories
             List<Product> list = new List<Product>();
             if (!string.IsNullOrEmpty(searchString))
             {
+                searchString = searchString.Trim();
                 SqlParameter[] parameters =
                 {
                     new SqlParameter("@CompanyID",companyID),
@@ -194,6 +196,7 @@ namespace ThonTrang.Data.Repositories
             dateEnd = new DateTime(dateEnd.Year, dateEnd.Month, dateEnd.Day, 23, 59, 59);
             if (!string.IsNullOrEmpty(searchString))
             {
+                searchString = searchString.Trim();
                 SqlParameter[] parameters =
                 {
                      new SqlParameter("@DateBegin",dateBegin),

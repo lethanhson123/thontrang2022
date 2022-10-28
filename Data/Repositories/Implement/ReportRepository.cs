@@ -116,22 +116,22 @@ namespace ThonTrang.Data.Repositories
             result = SQLHelper.ToList<WarehouseDetailDataTransfer>(dt);
             return result;
         }
-        public List<Product> TonKhoGocThuocToList()
+        public List<TonKhoGocThuocDataTransfer> TonKhoGocThuocToList()
         {
-            List<Product> result = new List<Product>();
+            List<TonKhoGocThuocDataTransfer> result = new List<TonKhoGocThuocDataTransfer>();
             DataTable dt = SQLHelper.Fill(AppGlobal.SQLServerConectionString, "sp_Report_TonKhoGocThuoc");
-            result = SQLHelper.ToList<Product>(dt);
+            result = SQLHelper.ToList<TonKhoGocThuocDataTransfer>(dt);
             return result;
         }
-        public Product TonKhoGocThuocByProductIngredientID(int productIngredientID)
+        public TonKhoGocThuocDataTransfer TonKhoGocThuocByProductIngredientID(int productIngredientID)
         {
-            Product result = new Product();
+            TonKhoGocThuocDataTransfer result = new TonKhoGocThuocDataTransfer();
             SqlParameter[] parameters =
             {
                     new SqlParameter("@ProductIngredientID",productIngredientID),
                 };
             DataTable dt = SQLHelper.Fill(AppGlobal.SQLServerConectionString, "sp_Report_TonKhoGocThuocByProductIngredientID", parameters);
-            List<Product> list = SQLHelper.ToList<Product>(dt);
+            List<TonKhoGocThuocDataTransfer> list = SQLHelper.ToList<TonKhoGocThuocDataTransfer>(dt);
             if (list.Count > 0)
             {
                 result = list[0];

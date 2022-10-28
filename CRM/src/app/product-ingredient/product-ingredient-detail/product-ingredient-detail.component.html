@@ -33,6 +33,21 @@
         </div>  
     </div>
     <div class="col s6 m6 l6">
+        <div class="col s4 m4 l4">
+            <div class="input-field">
+                <label for="UnitID">Đơn vị tính</label>
+            </div>
+        </div>
+        <div class="col s12 m12 l8">
+            <mat-select
+                style="padding-top:16px; padding-bottom:10px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
+                name="UnitID" class="browser-default"
+                [(ngModel)]="productIngredientService.formData.UnitID">
+                <mat-option *ngFor="let item of unitService.list" [value]="item.ID">
+                    {{item.Display}}
+                </mat-option>
+            </mat-select>
+        </div>
         <div class="col s12 m12 l12">
             <div class="col s6 m6 l3">
                 <div class="input-field">

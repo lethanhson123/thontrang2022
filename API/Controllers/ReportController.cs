@@ -60,7 +60,7 @@ namespace ThonTrang.API.Controllers
             return result;
         }
         [HttpGet]
-        public List<Product> TonKhoGocThuocToList()
+        public List<TonKhoGocThuocDataTransfer> TonKhoGocThuocToList()
         {
             var result = _reportRepository.TonKhoGocThuocToList();
             return result;
@@ -511,7 +511,7 @@ namespace ThonTrang.API.Controllers
                 int tonCuoiKy = 0;
                 foreach (WarehouseDetailDataTransfer item in list)
                 {
-                    STT = STT + 1;                    
+                    STT = STT + 1;
                     content.AppendLine(@"<tr>");
                     content.AppendLine(@"<td style='text-align:center;'>" + STT + "</td>");
                     content.AppendLine(@"<td style='text-align:right;'>" + item.DateFounded.Value.ToString("dd/MM/yyyy") + "</td>");
@@ -581,63 +581,62 @@ namespace ThonTrang.API.Controllers
             }
             contentHTML = contentHTML.Replace("[DatePrint]", AppGlobal.InitializationDateTime.ToString("dd/MM/yyyy HH:mm:ss"));
 
-            Product product = _reportRepository.TonKhoGocThuocByProductIngredientID(productIngredientID);
+            TonKhoGocThuocDataTransfer product = _reportRepository.TonKhoGocThuocByProductIngredientID(productIngredientID);
+
             if (product != null)
             {
 
-                contentHTML = contentHTML.Replace("[ProductDisplay]", product.NameOriginal);
+                contentHTML = contentHTML.Replace("[ProductDisplay]", product.ProductIngredientDisplay);
+                contentHTML = contentHTML.Replace("[UnitDisplay]", product.UnitDisplay);
                 contentHTML = contentHTML.Replace("[QuantityImport]", product.QuantityImport.Value.ToString("N0"));
-                contentHTML = contentHTML.Replace("[QuantityImport02]", product.QuantityImport02.Value.ToString("N0"));
                 contentHTML = contentHTML.Replace("[QuantityExport]", product.QuantityExport.Value.ToString("N0"));
-                contentHTML = contentHTML.Replace("[QuantityExport02]", product.QuantityExport02.Value.ToString("N0"));
                 contentHTML = contentHTML.Replace("[QuantityInStock]", product.QuantityInStock.Value.ToString("N0"));
-                contentHTML = contentHTML.Replace("[QuantityInStock02]", product.QuantityInStock02.Value.ToString("N0"));
 
-
-                List<WarehouseDetailDataTransfer> list = _reportRepository.TheKhoByProductIngredientIDToList(productIngredientID);
 
                 StringBuilder content = new StringBuilder();
+                List<WarehouseDetailDataTransfer> list = _reportRepository.TheKhoByProductIngredientIDToList(productIngredientID);
+
                 int STT = 0;
-                int tonCuoiKy = 0;
+                int? tonCuoiKy = 0;
+                decimal? tonCuoiKySpecifications = 0;
                 foreach (WarehouseDetailDataTransfer item in list)
                 {
                     STT = STT + 1;
+                    decimal? quantitySpecifications = item.Quantity * item.Specifications / 1000;
                     content.AppendLine(@"<tr>");
                     content.AppendLine(@"<td style='text-align:center;'>" + STT + "</td>");
                     content.AppendLine(@"<td style='text-align:right;'>" + item.DateFounded.Value.ToString("dd/MM/yyyy") + "</td>");
                     content.AppendLine(@"<td style='text-align:left;'>" + item.Code + "</td>");
                     content.AppendLine(@"<td style='text-align:left;'>" + item.ProductDisplay + "</td>");
-                    content.AppendLine(@"<td style='text-align:left;'>" + item.CompanyDisplay + "</td>");
-                    content.AppendLine(@"<td style='text-align:left;'>" + item.CustomerDisplay + "</td>");
+                    content.AppendLine(@"<td style='text-align:left;'>" + item.ProductUnitDisplay + "</td>");
+                    content.AppendLine(@"<td style='text-align:right;'>" + item.Specifications.Value.ToString("N0") + " (" + item.UnitDisplay + ")</td>");
                     if (item.SortOrder == 0)
                     {
+
                         content.AppendLine(@"<td style='text-align:right;'><b>" + item.Quantity.Value.ToString("N0") + "</b></td>");
-                        item.QuantityImport = item.Quantity / item.SpecificationsNumber;
-                        item.QuantityImport02 = item.Quantity % item.SpecificationsNumber;
-                        tonCuoiKy = tonCuoiKy + item.Quantity.Value;
+                        content.AppendLine(@"<td style='text-align:right;'><b>" + quantitySpecifications.Value.ToString("N0") + "</b></td>");
+                        tonCuoiKy = tonCuoiKy + item.Quantity;
+                        tonCuoiKySpecifications = tonCuoiKySpecifications + quantitySpecifications;
                     }
                     else
                     {
                         content.AppendLine(@"<td style='text-align:right;'></td>");
+                        content.AppendLine(@"<td style='text-align:right;'></td>");
                     }
-                    content.AppendLine(@"<td style='text-align:right;'>" + item.QuantityImport.Value.ToString("N0") + "</td>");
-                    content.AppendLine(@"<td style='text-align:right;'>" + item.QuantityImport02.Value.ToString("N0") + "</td>");
                     if (item.SortOrder == 1)
                     {
                         content.AppendLine(@"<td style='text-align:right;'><b>" + item.Quantity.Value.ToString("N0") + "</b></td>");
-                        item.QuantityExport = item.Quantity / item.SpecificationsNumber;
-                        item.QuantityExport02 = item.Quantity % item.SpecificationsNumber;
-                        tonCuoiKy = tonCuoiKy - item.Quantity.Value;
+                        content.AppendLine(@"<td style='text-align:right;'><b>" + quantitySpecifications.Value.ToString("N0") + "</b></td>");
+                        tonCuoiKy = tonCuoiKy - item.Quantity;
+                        tonCuoiKySpecifications = tonCuoiKySpecifications - quantitySpecifications;
                     }
                     else
                     {
                         content.AppendLine(@"<td style='text-align:right;'></td>");
+                        content.AppendLine(@"<td style='text-align:right;'></td>");
                     }
-                    content.AppendLine(@"<td style='text-align:right;'>" + item.QuantityExport.Value.ToString("N0") + "</td>");
-                    content.AppendLine(@"<td style='text-align:right;'>" + item.QuantityExport02.Value.ToString("N0") + "</td>");
-                    content.AppendLine(@"<td style='text-align:right;'><b>" + tonCuoiKy.ToString("N0") + "</b></td>");
-                    content.AppendLine(@"<td style='text-align:right;'>" + tonCuoiKy / item.SpecificationsNumber + "</td>");
-                    content.AppendLine(@"<td style='text-align:right;'>" + tonCuoiKy % item.SpecificationsNumber + "</td>");
+                    content.AppendLine(@"<td style='text-align:right;'><b>" + tonCuoiKy.Value.ToString("N0") + "</b></td>");
+                    content.AppendLine(@"<td style='text-align:right;'><b>" + tonCuoiKySpecifications.Value.ToString("N0") + "</b></td>");
                     content.AppendLine(@"</tr>");
                 }
                 contentHTML = contentHTML.Replace("[Details]", content.ToString());

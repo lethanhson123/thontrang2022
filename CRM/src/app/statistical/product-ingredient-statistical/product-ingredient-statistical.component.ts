@@ -16,7 +16,7 @@ import { Product } from 'src/app/shared/Product.model';
 export class ProductIngredientStatisticalComponent implements OnInit {
 
   dataSource: MatTableDataSource<any>;
-  displayColumns: string[] = ['NameOriginal','QuantityImport','QuantityImport02','QuantityExport','QuantityExport02','QuantityInStock','QuantityInStock02','actions'];  
+  displayColumns: string[] = ['ProductIngredientDisplay', 'UnitDisplay', 'QuantityImport','QuantityExport','QuantityInStock','actions'];  
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

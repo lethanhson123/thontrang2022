@@ -18,7 +18,7 @@ import { ProductIngredientDetailComponent } from './product-ingredient-detail/pr
 export class ProductIngredientComponent implements OnInit {
 
   dataSource: MatTableDataSource<any>;
-  displayColumns: string[] = ['ID','Name','Display','Active','actions'];  
+  displayColumns: string[] = ['ID','Name','Display', 'UnitDisplay', 'Active','actions'];  
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

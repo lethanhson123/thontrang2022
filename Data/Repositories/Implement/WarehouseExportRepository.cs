@@ -41,6 +41,7 @@ namespace ThonTrang.Data.Repositories
             List<WarehouseExport> list = new List<WarehouseExport>();
             if (!string.IsNullOrEmpty(searchString))
             {
+                searchString = searchString.Trim();
                 SqlParameter[] parameters =
                 {
                     new SqlParameter("@Active",active),

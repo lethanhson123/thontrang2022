@@ -65,6 +65,15 @@
                                         </div>
                                     </mat-cell>
                                 </ng-container>
+                                <ng-container matColumnDef="UnitDisplay">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Đơn vị tính
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div>
+                                            {{element.UnitDisplay}}
+                                        </div>
+                                    </mat-cell>
+                                </ng-container>
                                 <ng-container matColumnDef="Active">
                                     <mat-header-cell *matHeaderCellDef mat-sort-header>Kích hoạt
                                     </mat-header-cell>

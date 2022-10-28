@@ -20,6 +20,7 @@ namespace ThonTrang.Data.Repositories
             List<CustomerCategoryPrice> list = new List<CustomerCategoryPrice>();
             if (!string.IsNullOrEmpty(searchString))
             {
+                searchString = searchString.Trim();
                 SqlParameter[] parameters =
                 {
                     new SqlParameter("@ParentID",parentID),

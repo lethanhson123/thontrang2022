@@ -93,6 +93,15 @@ C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Dow
 C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoGocThuoc_ThonTrang_20221025184640638023204003136404.html
 C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoGocThuoc_ThonTrang_20221025184900638023205409924690.html
 C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoGocThuoc_ThonTrang_20221025185024638023206244314386.html
+C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoGocThuoc_ThonTrang_20221028141410638025632507574026.html
+C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoGocThuoc_ThonTrang_20221028143814638025646947472788.html
+C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoGocThuoc_ThonTrang_20221028144256638025649767802101.html
+C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoGocThuoc_ThonTrang_20221028150049638025660490670177.html
+C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoGocThuoc_ThonTrang_20221028150146638025661067062701.html
+C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoGocThuoc_ThonTrang_20221028150302638025661826613136.html
+C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoGocThuoc_ThonTrang_20221028150830638025665101659875.html
+C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoGocThuoc_ThonTrang_20221028151035638025666357414395.html
+C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoGocThuoc_ThonTrang_20221028151110638025666705782965.html
 C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoThanhPham_ThonTrang.html
 C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoThanhPham_ThonTrang_20221024145905638022203450849827.html
 C:\LeThanhSon\thontrang2022\API\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\Download\HTML\TonKhoThanhPham_ThonTrang_20221024150011638022204117328140.html

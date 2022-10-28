@@ -118,6 +118,7 @@ namespace ThonTrang.Data.Repositories
             List<Membership> list = new List<Membership>();
             if (!string.IsNullOrEmpty(searchString))
             {
+                searchString = searchString.Trim();
                 SqlParameter[] parameters =
                {
                     new SqlParameter("@SearchString",searchString),

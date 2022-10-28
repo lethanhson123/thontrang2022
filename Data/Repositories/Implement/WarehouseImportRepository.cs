@@ -30,6 +30,7 @@ namespace ThonTrang.Data.Repositories
             List<WarehouseImport> list = new List<WarehouseImport>();
             if (!string.IsNullOrEmpty(searchString))
             {
+                searchString = searchString.Trim();
                 SqlParameter[] parameters =
                 {
                     new SqlParameter("@Active",active),

@@ -228,6 +228,7 @@ namespace ThonTrang.Data.Repositories
             }
             else
             {
+                searchString = searchString.Trim();
                 result = _context.Set<T>().Where(model => model.Name.Contains(searchString) || model.Code.Contains(searchString) || model.Display.Contains(searchString)).OrderByDescending(model => model.DateUpdated).ToList();
             }
             return result;
@@ -241,6 +242,7 @@ namespace ThonTrang.Data.Repositories
             }
             else
             {
+                searchString = searchString.Trim();
                 result = await _context.Set<T>().Where(model => model.Name.Contains(searchString) || model.Code.Contains(searchString) || model.Display.Contains(searchString)).OrderByDescending(model => model.DateUpdated).ToListAsync();
             }
             return result;

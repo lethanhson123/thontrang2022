@@ -38,74 +38,56 @@
                         </div>
                         <div class="KhungOverflow">
                             <mat-table [dataSource]="dataSource" matSort>
-                                <ng-container matColumnDef="NameOriginal">
+                                <ng-container matColumnDef="ProductIngredientDisplay">
                                     <mat-header-cell *matHeaderCellDef mat-sort-header>Gốc thuốc
                                     </mat-header-cell>
                                     <mat-cell *matCellDef="let element" style="min-width: 200px;">
-                                        <b>{{element.NameOriginal}}</b>
+                                        <b>{{element.ProductIngredientDisplay}}</b>
                                         &nbsp;({{element.QuantityInStock}})
+                                    </mat-cell>
+                                </ng-container>                               
+                                <ng-container matColumnDef="UnitDisplay">
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Đơn vị tính
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <div>
+                                            {{element.UnitDisplay}}
+                                        </div>
                                     </mat-cell>
                                 </ng-container>
                                 <ng-container matColumnDef="QuantityImport">
-                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Nhập (Thùng)
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Nhập
                                     </mat-header-cell>
                                     <mat-cell *matCellDef="let element">
                                         <div style="text-align: right;">
                                             {{element.QuantityImport}}
                                         </div>
                                     </mat-cell>
-                                </ng-container>
-                                <ng-container matColumnDef="QuantityImport02">
-                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Nhập lẻ
-                                    </mat-header-cell>
-                                    <mat-cell *matCellDef="let element">
-                                        <div style="text-align: right;">
-                                            {{element.QuantityImport02}}
-                                        </div>
-                                    </mat-cell>
-                                </ng-container>
+                                </ng-container>                               
                                 <ng-container matColumnDef="QuantityExport">
-                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Xuất (Thùng)
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Xuất
                                     </mat-header-cell>
                                     <mat-cell *matCellDef="let element">
                                         <div style="text-align: right;">
                                             {{element.QuantityExport}}
                                         </div>
                                     </mat-cell>
-                                </ng-container>
-                                <ng-container matColumnDef="QuantityExport02">
-                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Xuất lẻ
-                                    </mat-header-cell>
-                                    <mat-cell *matCellDef="let element">
-                                        <div style="text-align: right;">
-                                            {{element.QuantityExport02}}
-                                        </div>
-                                    </mat-cell>
-                                </ng-container>
+                                </ng-container>                               
                                 <ng-container matColumnDef="QuantityInStock">
-                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tồn (Thùng)
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tồn
                                     </mat-header-cell>
                                     <mat-cell *matCellDef="let element">
                                         <div style="text-align: right;">
                                             {{element.QuantityInStock}}
                                         </div>
                                     </mat-cell>
-                                </ng-container>
-                                <ng-container matColumnDef="QuantityInStock02">
-                                    <mat-header-cell *matHeaderCellDef mat-sort-header>Tồn lẻ
-                                    </mat-header-cell>
-                                    <mat-cell *matCellDef="let element">
-                                        <div style="text-align: right;">
-                                            {{element.QuantityInStock02}}
-                                        </div>
-                                    </mat-cell>
-                                </ng-container>
+                                </ng-container>                                
                                 <ng-container matColumnDef="actions">
                                     <mat-header-cell *matHeaderCellDef mat-sort-header>
                                     </mat-header-cell>
                                     <mat-cell *matCellDef="let element">
                                         <div style="padding-top: 5px; width: 100%; text-align: center;">
-                                            <a title="In" (click)="onPrint(element.ProductIngredientID)"
+                                            <a title="{{element.ProductIngredientID}}" (click)="onPrint(element.ProductIngredientID)"
                                                 class="mb-6 btn-floating waves-effect waves-light green darken-1"><i
                                                     class="material-icons">print</i></a>
                                         </div>

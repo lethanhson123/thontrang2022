@@ -15,6 +15,9 @@ namespace ThonTrang.Data.Models
         public int? QuantityExport { get; set; }
         public int? QuantityExport02 { get; set; }
         public int? Quantity { get; set; }
+        public decimal? Specifications { get; set; }
+        public string UnitDisplay { get; set; }
+        public string ProductUnitDisplay { get; set; }
     }
 }
 
