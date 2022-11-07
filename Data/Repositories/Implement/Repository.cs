@@ -48,8 +48,7 @@ namespace ThonTrang.Data.Repositories
         }
         public virtual int Add(T model)
         {
-            Initialization(model);
-            _context.Set<T>().Add(model);
+            Initialization(model);            
             var existModel = GetByCode(model.Code);
             if (existModel == null)
             {

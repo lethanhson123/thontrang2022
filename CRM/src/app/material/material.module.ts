@@ -36,7 +36,7 @@ const MaterialComponents = [
   MatSortModule,
   MatDialogModule,
   NgxMatSelectSearchModule,
-  MatNativeDateModule,   
+  MatNativeDateModule,     
 ];
 
 @NgModule({

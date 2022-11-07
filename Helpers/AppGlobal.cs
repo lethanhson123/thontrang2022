@@ -286,7 +286,16 @@ namespace ThonTrang.Helpers
             return result;
         }
 
-
+        public static int CovertURLToInt(string url)
+        {
+            string result = url;
+            if (!string.IsNullOrEmpty(result))
+            {
+                result = result.Split('.')[0];
+                result = result.Split('/')[result.Split('/').Length - 1];
+            }
+            return int.Parse(result);
+        }
 
         #endregion
         #region Initialization
