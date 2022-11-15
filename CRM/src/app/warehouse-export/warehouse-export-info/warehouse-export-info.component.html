@@ -27,6 +27,7 @@
                         <div class="col s12 m12 l4">
                             <form autocomplete="off" class="row" #form="ngForm" (submit)="onSubmit(form)">
                                 <input name="ID" [(ngModel)]="warehouseExportService.formData.ID" type="hidden">
+                                <input name="CompanyID" [(ngModel)]="warehouseExportService.formData.CompanyID" type="hidden">
                                 <div class="card-title">
                                     <div class="col s6 m6 l6">
                                         <h3 class="card-title">Phiếu (01)
@@ -154,7 +155,7 @@
                                             [(ngModel)]="warehouseExportService.formData.AddressDelivery" type="text">
                                     </div>
                                 </div>
-                                <div class="col s6 m6 l4">
+                                <!-- <div class="col s6 m6 l4">
                                     <div class="input-field">
                                         <label for="CompanyID">Công ty</label>
                                     </div>
@@ -171,7 +172,7 @@
                                     </mat-select>
                                     <br />
                                     <br />
-                                </div>
+                                </div> -->
                                 <div class="col s6 m6 l4">
                                     <div class="input-field">
                                         <label for="StatusID">Trạng thái</label>
@@ -231,7 +232,7 @@
                                     <div class="col s4 m4 l3">
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" *ngIf="isShowAddDetail">
                                     <div class="col s12 m12 l6">
                                         <label for="ProductID"></label>
                                     </div>
@@ -244,13 +245,13 @@
                                     <div class="col s12 m12 l2">
                                     </div>
                                     <div class="col s12 m12 l6">
-                                        <mat-select
+                                        <mat-select (selectionChange)="onChangeProduct($event)"
                                             style="font-size: 16px; padding-top:0px; padding-bottom:14px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
                                             name="productID" class="browser-default"
                                             [(ngModel)]="warehouseExportDetailService.formData.ProductID">
                                             <input (keyup)="onFilterProduct($event.target.value)">
-                                            <mat-option *ngFor="let item of productService.list" [value]="item.ID">
-                                                {{item.Display}}
+                                            <mat-option *ngFor="let item of customerPriceService.list" [value]="item.ProductID">
+                                                {{item.ProductDisplay}}
                                             </mat-option>
                                         </mat-select>
                                     </div>

@@ -17,7 +17,7 @@ import { ReportService } from 'src/app/shared/Report.service';
 export class ProductStatisticalComponent implements OnInit {
 
   dataSource: MatTableDataSource<any>;
-  displayColumns: string[] = ['Name','CompanyName','ParentName','QuantityImport','QuantityImport02','QuantityExport','QuantityExport02','QuantityInStock','QuantityInStock02','actions'];  
+  displayColumns: string[] = ['Name','QuantityInStock','QuantityInStock02','DateExpiry','actions'];  
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

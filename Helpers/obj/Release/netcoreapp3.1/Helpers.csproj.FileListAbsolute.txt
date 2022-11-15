@@ -38,3 +38,13 @@ C:\LeThanhSon\thontrang2022\Helpers\obj\Release\netcoreapp3.1\Helpers.AssemblyIn
 C:\LeThanhSon\thontrang2022\Helpers\obj\Release\netcoreapp3.1\Helpers.csproj.CoreCompileInputs.cache
 C:\LeThanhSon\thontrang2022\Helpers\obj\Release\netcoreapp3.1\Helpers.dll
 C:\LeThanhSon\thontrang2022\Helpers\obj\Release\netcoreapp3.1\Helpers.pdb
+C:\LeThanhSon\Code\thontrang2022\Helpers\bin\Release\netcoreapp3.1\Helpers.deps.json
+C:\LeThanhSon\Code\thontrang2022\Helpers\bin\Release\netcoreapp3.1\Helpers.dll
+C:\LeThanhSon\Code\thontrang2022\Helpers\bin\Release\netcoreapp3.1\Helpers.pdb
+C:\LeThanhSon\Code\thontrang2022\Helpers\obj\Release\netcoreapp3.1\Helpers.csproj.AssemblyReference.cache
+C:\LeThanhSon\Code\thontrang2022\Helpers\obj\Release\netcoreapp3.1\Helpers.GeneratedMSBuildEditorConfig.editorconfig
+C:\LeThanhSon\Code\thontrang2022\Helpers\obj\Release\netcoreapp3.1\Helpers.AssemblyInfoInputs.cache
+C:\LeThanhSon\Code\thontrang2022\Helpers\obj\Release\netcoreapp3.1\Helpers.AssemblyInfo.cs
+C:\LeThanhSon\Code\thontrang2022\Helpers\obj\Release\netcoreapp3.1\Helpers.csproj.CoreCompileInputs.cache
+C:\LeThanhSon\Code\thontrang2022\Helpers\obj\Release\netcoreapp3.1\Helpers.dll
+C:\LeThanhSon\Code\thontrang2022\Helpers\obj\Release\netcoreapp3.1\Helpers.pdb

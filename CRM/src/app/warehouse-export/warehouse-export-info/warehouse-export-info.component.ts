@@ -17,6 +17,8 @@ import { Company } from 'src/app/shared/Company.model';
 import { CompanyService } from 'src/app/shared/Company.service';
 import { Customer } from 'src/app/shared/Customer.model';
 import { CustomerService } from 'src/app/shared/Customer.service';
+import { CustomerPrice } from 'src/app/shared/CustomerPrice.model';
+import { CustomerPriceService } from 'src/app/shared/CustomerPrice.service';
 import { Membership } from 'src/app/shared/Membership.model';
 import { MembershipService } from 'src/app/shared/Membership.service';
 import { Product } from 'src/app/shared/Product.model';
@@ -38,6 +40,7 @@ export class WarehouseExportInfoComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   isShowLoading: boolean = false;
+  isShowAddDetail: boolean = false;
   queryString: string = environment.InitializationString;
   URLSub: string = "WarehouseExportInfo";
   fileToUpload: any;
@@ -54,6 +57,7 @@ export class WarehouseExportInfoComponent implements OnInit {
     public membershipService: MembershipService,
     public productService: ProductService,
     public unitService: UnitService,
+    public customerPriceService: CustomerPriceService,
     private dialog: MatDialog
   ) {
 
@@ -79,6 +83,18 @@ export class WarehouseExportInfoComponent implements OnInit {
           this.warehouseExportDetailService.formData.ProductID = this.productService.list[0].ID;
           this.warehouseExportDetailService.formData.Quantity = 1;
           this.warehouseExportDetailService.formData.Price = 0;
+        }
+      }
+    });
+  }
+  getCustomerPriceToList(queryString: string) {
+    this.customerPriceService.getByParentIDAndSearchStringAndIsWishlistToList(this.warehouseExportService.formData.CustomerID, queryString, true).then(res => {
+      this.customerPriceService.list = res as CustomerPrice[];
+      if (this.customerPriceService.list) {
+        if (this.customerPriceService.list.length) {
+          this.warehouseExportDetailService.formData.ProductID = this.customerPriceService.list[0].ProductID;
+          this.warehouseExportDetailService.formData.Quantity = 1;
+          this.warehouseExportDetailService.formData.Price = this.customerPriceService.list[0].Price;
         }
       }
     });
@@ -127,13 +143,20 @@ export class WarehouseExportInfoComponent implements OnInit {
   onChangeCompany($event) {
     this.getProductToList('');
   }
+  onChangeProduct($event) {
+    for (let i = 0; i < this.customerPriceService.list.length; i++) {
+      if (this.customerPriceService.list[i].ProductID === this.warehouseExportDetailService.formData.ProductID) {
+        this.warehouseExportDetailService.formData.Price = this.customerPriceService.list[i].Price;
+      }
+    }
+  }
   onFilterProduct(searchString: string) {
-    this.getProductToList(searchString);
+    this.getCustomerPriceToList(searchString);
   }
   getWarehouseExportByQueryString() {
     this.isShowLoading = true;
     this.warehouseExportService.getByIDString(this.queryString).then(res => {
-      this.warehouseExportService.formData = res as WarehouseExport;      
+      this.warehouseExportService.formData = res as WarehouseExport;
       this.isShowLoading = false;
     });
   }
@@ -143,6 +166,7 @@ export class WarehouseExportInfoComponent implements OnInit {
       this.warehouseExportService.formData = res as WarehouseExport;
       if (this.warehouseExportService.formData) {
         if (this.warehouseExportService.formData.ID) {
+          this.isShowAddDetail = true;
           this.getByParentIDToList();
         }
         if (this.warehouseExportService.formData.CustomerID) {
@@ -163,7 +187,7 @@ export class WarehouseExportInfoComponent implements OnInit {
             }
           }
         }
-        this.getProductToList('');
+        this.getCustomerPriceToList('');
         if ((this.warehouseExportService.formData.StatusID == null) || (this.warehouseExportService.formData.StatusID == 0)) {
           if (this.statusService.list) {
             if (this.statusService.list.length) {
@@ -214,12 +238,12 @@ export class WarehouseExportInfoComponent implements OnInit {
         element.ParentID = this.warehouseExportDetailService.formData.ID
         this.isShowLoading = true;
         this.warehouseExportDetailService.save(element).subscribe(
-          res => {           
+          res => {
             this.notificationService.success(environment.SaveSuccess);
             this.isShowLoading = false;
             this.getWarehouseExportByQueryString();
             this.getByParentIDToList();
-            this.getByID();            
+            this.getByID();
           },
           err => {
             this.notificationService.warn(environment.SaveNotSuccess);
@@ -243,7 +267,7 @@ export class WarehouseExportInfoComponent implements OnInit {
   }
   onDeleteDetail(element: WarehouseExportDetail) {
     if (confirm(environment.DeleteConfirm)) {
-      this.warehouseExportDetailService.remove(element.ID).then(res => {        
+      this.warehouseExportDetailService.remove(element.ID).then(res => {
         this.notificationService.success(environment.DeleteSuccess);
         this.getWarehouseExportByQueryString();
         this.getByParentIDToList();

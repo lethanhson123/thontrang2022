@@ -32,6 +32,7 @@ namespace ThonTrang.Data.Models
         public decimal? TotalDebt { get; set; }
         public WarehouseExport()
         {
+            CompanyID = 1;
             Active = true;
             StatusID = 1;
             TotalFinal = 0;

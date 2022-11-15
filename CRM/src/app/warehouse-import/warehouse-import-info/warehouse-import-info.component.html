@@ -158,19 +158,23 @@
                                 </div>
                                 <div class="col s4 m4 l3">
                                 </div>
-                                <div class="row">
-                                    <div class="col s12 m12 l6">
+                                <div class="row" *ngIf="isShowAddDetail">
+                                    <div class="col s12 m12 l4">
                                         <label for="ProductID"></label>
-                                    </div>                                   
+                                    </div>
                                     <div class="col s12 m12 l2">
                                         <label for="Quantity">Số lượng</label>
                                     </div>
                                     <div class="col s12 m12 l2">
                                         <label for="Price">Đơn giá</label>
                                     </div>
-                                    <div class="col s12 m12 l2">
+                                    <div class="col s12 m12 l3">
+                                        <label for="DateExpiry">{{warehouseImportDetailService.formData.DateExpiry |
+                                            date: 'yyyy-MM-dd'}}</label>
                                     </div>
-                                    <div class="col s12 m12 l6">
+                                    <div class="col s12 m12 l1">
+                                    </div>
+                                    <div class="col s12 m12 l4">
                                         <mat-select
                                             style="font-size: 16px; padding-top:0px; padding-bottom:14px; border-bottom-color: #000000; border-bottom-width: 1px; border-bottom-style: solid;"
                                             name="productID" class="browser-default"
@@ -180,7 +184,7 @@
                                                 {{item.Display}}
                                             </mat-option>
                                         </mat-select>
-                                    </div>                                    
+                                    </div>
                                     <div class="col s12 m12 l2">
                                         <input matInput [(ngModel)]="warehouseImportDetailService.formData.Quantity"
                                             placeholder="Số lượng"
@@ -193,8 +197,14 @@
                                             class="mat-input-element mat-form-field-autofill-control" type="number"
                                             style="text-align: right;">
                                     </div>
-                                    <div class="col s12 m12 l2">
-                                        <a title="Thêm chi tiết" type="submit" style="padding-top: 3px;"
+                                    <div class="col s12 m12 l3">
+                                        <input [(ngModel)]="warehouseImportDetailService.formData.DateExpiry"
+                                            name="DateExpiry" type="date" datetime="yyyy-MM-dd"
+                                            style="text-align: right;">
+                                    </div>
+                                    <div class="col s12 m12 l1">
+                                        <a title="Thêm chi tiết" type="submit"
+                                            style="padding-top: 3px;"
                                             class="mb-6 btn-floating waves-effect waves-light cyan"
                                             (click)="onAddDetail()"><i class="material-icons">add</i></a>
                                     </div>
@@ -235,6 +245,14 @@
                                                 type="number" style="text-align: right;">
                                         </mat-cell>
                                     </ng-container>
+                                    <ng-container matColumnDef="DateExpiry">
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header>Hết hạn
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let element">
+                                            <input [(ngModel)]="element.DateExpiry" type="date" datetime="yyyy-MM-dd"
+                                                style="text-align: right; margin-left: 5px; margin-right: 5px;">
+                                        </mat-cell>
+                                    </ng-container>
                                     <ng-container matColumnDef="Total">
                                         <mat-header-cell *matHeaderCellDef mat-sort-header>Tổng cộng
                                         </mat-header-cell>
@@ -249,15 +267,15 @@
                                         </mat-header-cell>
                                         <mat-cell *matCellDef="let element">
                                             <a title="Lưu chi tiết" type="submit" style="padding-top: 0px;"
-                                                    class="mb-6 btn-floating waves-effect waves-light cyan"
-                                                    (click)="onUpdateDetail(element)"><i
-                                                        class="material-icons">create</i></a>
+                                                class="mb-6 btn-floating waves-effect waves-light cyan"
+                                                (click)="onUpdateDetail(element)"><i
+                                                    class="material-icons">create</i></a>
                                         </mat-cell>
                                     </ng-container>
                                     <ng-container matColumnDef="Delete">
                                         <mat-header-cell *matHeaderCellDef mat-sort-header>
                                         </mat-header-cell>
-                                        <mat-cell *matCellDef="let element">                                           
+                                        <mat-cell *matCellDef="let element">
                                             <a style="padding-top: 0px;" title="Xóa"
                                                 class="mb-6 btn-floating waves-effect waves-light red"
                                                 (click)="onDeleteDetail(element)"><i

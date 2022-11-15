@@ -32,12 +32,13 @@ import { UnitService } from 'src/app/shared/Unit.service';
 export class WarehouseImportInfoComponent implements OnInit {
 
   dataSource: MatTableDataSource<any>;
-  displayColumns: string[] = ['ProductDisplay', 'UnitDisplay', 'Quantity', 'Price', 'Total', 'Save', 'Delete'];
+  displayColumns: string[] = ['ProductDisplay', 'UnitDisplay', 'Quantity', 'Price', 'DateExpiry', 'Total' , 'Save', 'Delete'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   isShowLoading: boolean = false;
+  isShowAddDetail: boolean = false;
   queryString: string = environment.InitializationString;
-  URLSub: string = "WarehouseImportInfo"; 
+  URLSub: string = "WarehouseImportInfo";
   fileToUpload: any;
   fileToUpload0: File = null;
   isAttachments: boolean = false;
@@ -56,9 +57,9 @@ export class WarehouseImportInfoComponent implements OnInit {
 
     this.router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
-        this.queryString = event.url;                
+        this.queryString = event.url;
         this.getCompanyToList();
-        //this.getCustomerToList();
+        this.getWarehouseImportDetail();
         this.getMembershipToList();
         this.getStatusToList();
         this.getByQueryString();
@@ -74,15 +75,18 @@ export class WarehouseImportInfoComponent implements OnInit {
       if (this.productService.list) {
         if (this.productService.list.length) {
           this.warehouseImportDetailService.formData.ProductID = this.productService.list[0].ID;
-          this.warehouseImportDetailService.formData.Quantity = 1;
-          this.warehouseImportDetailService.formData.Price = 0;
         }
       }
     });
-  }  
-  getCompanyToList() {    
+  }
+  getCompanyToList() {
     this.companyService.getAllToList().then(res => {
-      this.companyService.list = res as Company[];            
+      this.companyService.list = res as Company[];
+    });
+  }
+  getWarehouseImportDetail() {
+    this.warehouseImportDetailService.getByID(0).then(res => {
+      this.warehouseImportDetailService.formData = res as WarehouseImportDetail;
     });
   }
   getCustomerToList() {
@@ -116,15 +120,15 @@ export class WarehouseImportInfoComponent implements OnInit {
       }
     });
   }
- 
+
   getMembershipToList() {
     this.membershipService.getAllToList().then(res => {
-      this.membershipService.list = res as Membership[];      
+      this.membershipService.list = res as Membership[];
     });
   }
   getStatusToList() {
     this.statusService.getAllToList().then(res => {
-      this.statusService.list = res as Status[];      
+      this.statusService.list = res as Status[];
     });
   }
   onChangeCustomer($event) {
@@ -144,14 +148,15 @@ export class WarehouseImportInfoComponent implements OnInit {
       if (this.warehouseImportService.formData) {
         if (this.warehouseImportService.formData.ID) {
           this.getByParentIDToList();
-        }               
+          this.isShowAddDetail = true;
+        }
         if ((this.warehouseImportService.formData.CompanyID == null) || (this.warehouseImportService.formData.CompanyID == 0)) {
           if (this.companyService.list) {
             if (this.companyService.list.length) {
               this.warehouseImportService.formData.CompanyID = this.companyService.list[0].ID;
             }
           }
-        }        
+        }
         this.getProductToList('');
         if ((this.warehouseImportService.formData.StatusID == null) || (this.warehouseImportService.formData.StatusID == 0)) {
           if (this.statusService.list) {
@@ -162,7 +167,7 @@ export class WarehouseImportInfoComponent implements OnInit {
         }
         if ((this.warehouseImportService.formData.UserFoundedID == null) || (this.warehouseImportService.formData.UserFoundedID == 0)) {
           this.warehouseImportService.formData.UserFoundedID = this.notificationService.membershipID;
-        }  
+        }
       }
       this.isShowLoading = false;
     });
@@ -181,7 +186,7 @@ export class WarehouseImportInfoComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.isShowLoading = false;
     });
-  } 
+  }
   onSubmit(form: NgForm) {
     this.isShowLoading = true;
     this.warehouseImportService.save(form.value).subscribe(
@@ -196,7 +201,7 @@ export class WarehouseImportInfoComponent implements OnInit {
         this.isShowLoading = false;
       }
     );
-  }  
+  }
   onSaveDetail(element: WarehouseImportDetail) {
     if (this.warehouseImportService.formData) {
       if (this.warehouseImportService.formData.ID) {

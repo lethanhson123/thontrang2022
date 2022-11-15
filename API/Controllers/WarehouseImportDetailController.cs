@@ -44,6 +44,16 @@ namespace ThonTrang.API.Controllers
             var result = _warehouseImportDetailRepository.Remove(ID);
             return result;
         }
+        [HttpGet]
+        public WarehouseImportDetail GetByID(int ID)
+        {
+            WarehouseImportDetail result = _warehouseImportDetailRepository.GetByID(ID);
+            if (result == null)
+            {
+                result = new WarehouseImportDetail();
+            }
+            return result;
+        }
     }
 }
 

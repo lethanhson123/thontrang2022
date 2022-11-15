@@ -50,3 +50,16 @@ C:\LeThanhSon\thontrang2022\Data\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompile
 C:\LeThanhSon\thontrang2022\Data\obj\Debug\netcoreapp3.1\Data.csproj.CopyComplete
 C:\LeThanhSon\thontrang2022\Data\obj\Debug\netcoreapp3.1\Data.dll
 C:\LeThanhSon\thontrang2022\Data\obj\Debug\netcoreapp3.1\Data.pdb
+C:\LeThanhSon\Code\thontrang2022\Data\bin\Debug\netcoreapp3.1\Data.deps.json
+C:\LeThanhSon\Code\thontrang2022\Data\bin\Debug\netcoreapp3.1\Data.dll
+C:\LeThanhSon\Code\thontrang2022\Data\bin\Debug\netcoreapp3.1\Data.pdb
+C:\LeThanhSon\Code\thontrang2022\Data\bin\Debug\netcoreapp3.1\Helpers.dll
+C:\LeThanhSon\Code\thontrang2022\Data\bin\Debug\netcoreapp3.1\Helpers.pdb
+C:\LeThanhSon\Code\thontrang2022\Data\obj\Debug\netcoreapp3.1\Data.csproj.AssemblyReference.cache
+C:\LeThanhSon\Code\thontrang2022\Data\obj\Debug\netcoreapp3.1\Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\LeThanhSon\Code\thontrang2022\Data\obj\Debug\netcoreapp3.1\Data.AssemblyInfoInputs.cache
+C:\LeThanhSon\Code\thontrang2022\Data\obj\Debug\netcoreapp3.1\Data.AssemblyInfo.cs
+C:\LeThanhSon\Code\thontrang2022\Data\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache
+C:\LeThanhSon\Code\thontrang2022\Data\obj\Debug\netcoreapp3.1\Data.csproj.CopyComplete
+C:\LeThanhSon\Code\thontrang2022\Data\obj\Debug\netcoreapp3.1\Data.dll
+C:\LeThanhSon\Code\thontrang2022\Data\obj\Debug\netcoreapp3.1\Data.pdb

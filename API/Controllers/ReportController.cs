@@ -19,11 +19,13 @@ namespace ThonTrang.API.Controllers
         private readonly ICompanyRepository _companyRepository;
         private readonly ICustomerRepository _customerRepository;
         private readonly IProductRepository _productRepository;
+        private readonly IUnitRepository _unitRepository;
         public ReportController(IWebHostEnvironment webHostEnvironment
             , IReportRepository reportRepository
             , ICompanyRepository companyRepository
             , ICustomerRepository customerRepository
             , IProductRepository productRepository
+            , IUnitRepository unitRepository
          ) : base()
         {
             _webHostEnvironment = webHostEnvironment;
@@ -31,6 +33,7 @@ namespace ThonTrang.API.Controllers
             _companyRepository = companyRepository;
             _customerRepository = customerRepository;
             _productRepository = productRepository;
+            _unitRepository = unitRepository;
         }
         [HttpGet]
         public List<ProductDataTransfer> TheKhoByDateBeginAndDateEndToList(string dateBegin, string dateEnd)
@@ -494,8 +497,13 @@ namespace ThonTrang.API.Controllers
             Product product = _productRepository.GetByID(productID);
             if (product != null)
             {
-
+                Unit unit = _unitRepository.GetByID(product.UnitID.Value);
+                if (unit != null)
+                {
+                    contentHTML = contentHTML.Replace("[UnitDisplay]", unit.Display);
+                }
                 contentHTML = contentHTML.Replace("[ProductDisplay]", product.Display);
+                contentHTML = contentHTML.Replace("[SpecificationsNumber]", product.SpecificationsNumber.Value.ToString());
                 contentHTML = contentHTML.Replace("[QuantityImport]", product.QuantityImport.Value.ToString("N0"));
                 contentHTML = contentHTML.Replace("[QuantityImport02]", product.QuantityImport02.Value.ToString("N0"));
                 contentHTML = contentHTML.Replace("[QuantityExport]", product.QuantityExport.Value.ToString("N0"));
@@ -513,10 +521,7 @@ namespace ThonTrang.API.Controllers
                 {
                     STT = STT + 1;
                     content.AppendLine(@"<tr>");
-                    content.AppendLine(@"<td style='text-align:center;'>" + STT + "</td>");
                     content.AppendLine(@"<td style='text-align:right;'>" + item.DateFounded.Value.ToString("dd/MM/yyyy") + "</td>");
-                    content.AppendLine(@"<td style='text-align:left;'>" + item.Code + "</td>");
-                    content.AppendLine(@"<td style='text-align:left;'>" + item.CompanyDisplay + "</td>");
                     content.AppendLine(@"<td style='text-align:left;'>" + item.CustomerDisplay + "</td>");
                     if (item.SortOrder == 0)
                     {
@@ -547,6 +552,8 @@ namespace ThonTrang.API.Controllers
                     content.AppendLine(@"<td style='text-align:right;'><b>" + tonCuoiKy.ToString("N0") + "</b></td>");
                     content.AppendLine(@"<td style='text-align:right;'>" + tonCuoiKy / product.SpecificationsNumber + "</td>");
                     content.AppendLine(@"<td style='text-align:right;'>" + tonCuoiKy % product.SpecificationsNumber + "</td>");
+                    content.AppendLine(@"<td style='text-align:left;'>" + item.CompanyDisplay + "</td>");
+                    content.AppendLine(@"<td style='text-align:left;'>" + item.Code + "</td>");
                     content.AppendLine(@"</tr>");
                 }
                 contentHTML = contentHTML.Replace("[Details]", content.ToString());

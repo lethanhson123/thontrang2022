@@ -1,4 +1,6 @@
 using System;
+using ThonTrang.Helpers;
+
 namespace ThonTrang.Data.Models
 {
     public partial class WarehouseImportDetail : BaseModel
@@ -21,6 +23,13 @@ namespace ThonTrang.Data.Models
         public int? QuantityInStock { get; set; }
         public int? QuantityInStock02 { get; set; }
         public decimal? Weight { get; set; }
+        public DateTime? DateExpiry { get; set; }
+        public WarehouseImportDetail()
+        {
+            DateExpiry = AppGlobal.InitializationDateTime;
+            Quantity = 1;
+            Price = 0;
+        }
     }
 }
 

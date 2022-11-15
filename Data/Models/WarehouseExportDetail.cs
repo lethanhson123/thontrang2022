@@ -20,7 +20,7 @@ namespace ThonTrang.Data.Models
         public int? QuantityImport02 { get; set; }
         public int? QuantityInStock { get; set; }
         public int? QuantityInStock02 { get; set; }
-        public decimal? Weight { get; set; }
+        public decimal? Weight { get; set; }        
     }
 }
 

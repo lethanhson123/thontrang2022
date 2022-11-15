@@ -36,7 +36,12 @@ export class WarehouseImportDetailService {
         .set('parentID', JSON.stringify(parentID))        
         return this.httpClient.get(url, { params }).toPromise();
     }   
-    
+    getByID(ID: number) {
+        let url = this.aPIURL + this.controller + '/GetByID';
+        const params = new HttpParams()
+        .set('ID', JSON.stringify(ID))        
+        return this.httpClient.get(url, { params }).toPromise();
+    }   
     remove(ID) {
         var userUpdated: number = 0;
         var membershipID = localStorage.getItem("MembershipID");

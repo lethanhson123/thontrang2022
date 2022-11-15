@@ -30,6 +30,7 @@ namespace ThonTrang.Data.Models
         public int? UnitIDSpecifications { get; set; }
         public string UnitDisplaySpecifications { get; set; }
         public decimal? SpecificationsDecimal { get; set; }
+        public DateTime? DateExpiry { get; set; }
     }
 }
 

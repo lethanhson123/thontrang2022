@@ -8082,19 +8082,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ltson\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\LeThanhSon\\thontrang2022\\API\\API.csproj",
+      "projectUniqueName": "C:\\LeThanhSon\\Code\\thontrang2022\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\LeThanhSon\\thontrang2022\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\ltson\\.nuget\\packages\\",
-      "outputPath": "C:\\LeThanhSon\\thontrang2022\\API\\obj\\",
+      "projectPath": "C:\\LeThanhSon\\Code\\thontrang2022\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\LeThanhSon\\Code\\thontrang2022\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ltson\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8108,11 +8108,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\LeThanhSon\\thontrang2022\\Data\\Data.csproj": {
-              "projectPath": "C:\\LeThanhSon\\thontrang2022\\Data\\Data.csproj"
+            "C:\\LeThanhSon\\Code\\thontrang2022\\Data\\Data.csproj": {
+              "projectPath": "C:\\LeThanhSon\\Code\\thontrang2022\\Data\\Data.csproj"
             },
-            "C:\\LeThanhSon\\thontrang2022\\Helpers\\Helpers.csproj": {
-              "projectPath": "C:\\LeThanhSon\\thontrang2022\\Helpers\\Helpers.csproj"
+            "C:\\LeThanhSon\\Code\\thontrang2022\\Helpers\\Helpers.csproj": {
+              "projectPath": "C:\\LeThanhSon\\Code\\thontrang2022\\Helpers\\Helpers.csproj"
             }
           }
         }
@@ -8171,7 +8171,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

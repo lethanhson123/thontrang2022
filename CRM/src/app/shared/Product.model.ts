@@ -38,6 +38,7 @@ export class Product {
     ProductIngredientID?: number;      
     UnitIDSpecifications?: number;   
     UnitDisplaySpecifications?: string;          
-    SpecificationsDecimal?: number;      
+    SpecificationsDecimal?: number;   
+    DateExpiry?: Date;       
 }
 

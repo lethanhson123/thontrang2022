@@ -28,6 +28,7 @@ export class WarehouseImportDetail {
     QuantityImport?: number;      
     QuantityImport02?: number;      
     QuantityInStock?: number;      
-    QuantityInStock02?: number;        
+    QuantityInStock02?: number;     
+    DateExpiry?: Date;     
 }
 
