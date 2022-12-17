@@ -37,7 +37,7 @@ namespace ThonTrang.Data.Models
             StatusID = 1;
             TotalFinal = 0;
             DateFounded = AppGlobal.InitializationDateTime;
-            Code = AppGlobal.InitializationDateTimeTicksCode.Substring(0, 5);
+            Code = AppGlobal.InitializationDateTimeCode;
         }
     }
 }

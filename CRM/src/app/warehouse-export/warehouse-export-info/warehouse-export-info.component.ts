@@ -65,6 +65,7 @@ export class WarehouseExportInfoComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         this.queryString = event.url;
         this.getCompanyToList();
+        this.getWarehouseExportDetail();
         this.getCustomerToList();
         this.getMembershipToList();
         this.getStatusToList();
@@ -74,6 +75,11 @@ export class WarehouseExportInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  getWarehouseExportDetail() {
+    this.warehouseExportDetailService.getByID(0).then(res => {
+      this.warehouseExportDetailService.formData = res as WarehouseExportDetail;
+    });
   }
   getProductToList(queryString: string) {
     this.productService.getByCompanyIDAndSearchStringToList(this.warehouseExportService.formData.CompanyID, queryString).then(res => {
@@ -221,7 +227,7 @@ export class WarehouseExportInfoComponent implements OnInit {
     this.isShowLoading = true;
     this.warehouseExportService.save(form.value).subscribe(
       res => {
-        this.notificationService.success(environment.SaveSuccess);
+        //this.notificationService.success(environment.SaveSuccess);
         this.isShowLoading = false;
         this.warehouseExportService.formData = res as WarehouseExport;
         window.location.href = environment.DomainDestination + this.URLSub + "/" + this.warehouseExportService.formData.ID;
@@ -232,10 +238,10 @@ export class WarehouseExportInfoComponent implements OnInit {
       }
     );
   }
-  onSaveDetail(element: WarehouseExportDetail) {
-    if (this.warehouseExportDetailService.formData) {
-      if (this.warehouseExportDetailService.formData.ID) {
-        element.ParentID = this.warehouseExportDetailService.formData.ID
+  onSaveDetail(element: WarehouseExportDetail) {    
+    if (this.warehouseExportService.formData) {
+      if (this.warehouseExportService.formData.ID) {
+        element.ParentID = this.warehouseExportService.formData.ID
         this.isShowLoading = true;
         this.warehouseExportDetailService.save(element).subscribe(
           res => {

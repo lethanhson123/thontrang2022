@@ -67,6 +67,16 @@ namespace ThonTrang.API.Controllers
             var result = _warehouseExportDetailRepository.Remove(ID);
             return result;
         }
+        [HttpGet]
+        public WarehouseExportDetail GetByID(int ID)
+        {
+            WarehouseExportDetail result = _warehouseExportDetailRepository.GetByID(ID);
+            if (result == null)
+            {
+                result = new WarehouseExportDetail();
+            }
+            return result;
+        }
     }
 }
 

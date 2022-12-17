@@ -31,7 +31,7 @@ namespace ThonTrang.Data.Repositories
             }
             if (string.IsNullOrEmpty(model.Code))
             {
-                model.Code = AppGlobal.InitializationDateTimeTicksCode.Substring(0, 5);
+                model.Code = AppGlobal.InitializationDateTimeCode;
             }
             if (string.IsNullOrEmpty(model.Name))
             {

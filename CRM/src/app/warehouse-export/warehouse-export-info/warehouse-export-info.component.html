@@ -250,8 +250,17 @@
                                             name="productID" class="browser-default"
                                             [(ngModel)]="warehouseExportDetailService.formData.ProductID">
                                             <input (keyup)="onFilterProduct($event.target.value)">
-                                            <mat-option *ngFor="let item of customerPriceService.list" [value]="item.ProductID">
-                                                {{item.ProductDisplay}}
+                                            <mat-option *ngFor="let item of customerPriceService.list" [value]="item.ProductID" style="height: 130px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <img width="100" height="100" src="{{item.ProductImageURL}}" />
+                                                        </td>
+                                                        <td>
+                                                            {{item.ProductDisplay}}
+                                                        </td>
+                                                    </tr>
+                                                </table>                                                
                                             </mat-option>
                                         </mat-select>
                                     </div>
